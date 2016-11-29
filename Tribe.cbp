@@ -13,6 +13,9 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="SDLwrapper" />
+					<Add directory="Utils" />
+					<Add directory="Entity" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +25,9 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="SDLwrapper" />
+					<Add directory="Utils" />
+					<Add directory="Entity" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -39,6 +45,12 @@
 			<Add directory="E:/C++/SDL/SDL2-2.0.5/i686-w64-mingw32/lib" />
 			<Add directory="E:/C++/SDL/SDL2_image-2.0.1/i686-w64-mingw32/lib" />
 		</Linker>
+		<Unit filename="Entity/Location.cpp" />
+		<Unit filename="Entity/Location.h" />
+		<Unit filename="SDLwrapper/Image.cpp" />
+		<Unit filename="SDLwrapper/Image.h" />
+		<Unit filename="Utils/Logger.cpp" />
+		<Unit filename="Utils/Logger.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

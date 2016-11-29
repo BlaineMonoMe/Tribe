@@ -1,7 +1,10 @@
 # depslib dependency file v1.0
-1480366719 source:e:\c++\codeblocks\tribe\main.cpp
+1480442477 source:e:\c++\codeblocks\tribe\main.cpp
 	<SDL.h>
 	<stdio.h>
+	"Image.h"
+	"Location.h"
+	"GlobalValues.h"
 
 1476935894 e:\c++\sdl\sdl2-2.0.5\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -327,4 +330,35 @@
 	"SDL_version.h"
 	"begin_code.h"
 	"close_code.h"
+
+1480427454 e:\c++\codeblocks\tribe\sdlwrapper\image.h
+	<SDL.h>
+	<SDL_image.h>
+	"Logger.h"
+
+1480430637 source:e:\c++\codeblocks\tribe\sdlwrapper\image.cpp
+	<stdio.h>
+	"Image.h"
+
+1480423117 e:\c++\codeblocks\tribe\utils\logger.h
+	<iostream>
+	<fstream>
+
+1480423907 source:e:\c++\codeblocks\tribe\utils\logger.cpp
+	"Logger.h"
+
+1480445921 source:e:\c++\codeblocks\tribe\entity\location.cpp
+	"Location.h"
+
+1480445358 e:\c++\codeblocks\tribe\entity\location.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Image.h"
+	"../GlobalValues.h"
+
+1480442379 source:e:\c++\codeblocks\tribe\globalvalues.cpp
+	"GlobalValues.h"
+
+1480442393 e:\c++\codeblocks\tribe\globalvalues.h
 
