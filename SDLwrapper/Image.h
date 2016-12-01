@@ -14,10 +14,14 @@ class Image
         ~Image();
         bool isEmpty();
         void load(char *filename, SDL_Surface *screen);
-        void draw(SDL_Rect *imageRect, SDL_Rect *screenRect, SDL_Surface *screen);
+        void draw(SDL_Rect *imageRect, SDL_Rect *screenRect);
+
+        int getWidth();
+        int getHeight();
 
     private:
         SDL_Surface *surface = NULL;
+        SDL_Surface *screen = NULL;
 };
 
 #endif // IMAGE_H

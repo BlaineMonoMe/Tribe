@@ -1,34 +1,71 @@
 #include "Location.h"
 
-Location::Location(){}
-
-Location::Location(char* locationNumber, SDL_Surface *screen)
+Location::Location(char* locationNumber)
 {
-    load(locationNumber, screen);
+    strcpy(this->locationNumber, locationNumber);
+
+    char dataFilePath[80] = {0};
+    strcat(dataFilePath, GlobalValues::LOCATIONS_DIR);
+    strcat(dataFilePath, locationNumber);
+    strcat(dataFilePath, GlobalValues::LOCATION_TXT_FILENAME);
+
+    std::string line;
+    std::ifstream myfile(dataFilePath);
+
+    std::getline(myfile, line);
+    cellsInRowCount = atoi(line.c_str());
+
+    std::getline(myfile, line);
+    cellsInColCount = atoi(line.c_str());
+
+    matrix = new int*[cellsInColCount];
+	for(int i = 0; i < cellsInColCount; i++)
+	{
+	    matrix[i] = new int[cellsInRowCount];
+	}
+
+
+    for(int j = 0; j < cellsInColCount; j++)
+    {
+        std::getline(myfile, line);
+        std::istringstream f(line);
+        std::string subline;
+
+        for(int i = 0; i < cellsInRowCount; i++)
+        {
+            std::getline(f, subline, ' ');
+            matrix[j][i] = atoi(subline.c_str());
+        }
+    }
+
 }
 
 Location::~Location()
 {
-    //dtor
+    for(int i = 0; i < cellsInColCount; i++)
+	{
+		delete[] matrix[i];
+	}
+	delete[] matrix;
 }
 
-void Location::load(char* locationNumber, SDL_Surface *screen)
+int Location::getWidth()
 {
-    char imageFilePath[80];
-    strcat(imageFilePath, GlobalValues::LOCATIONS_DIR);
-    strcat(imageFilePath, locationNumber);
-    strcat(imageFilePath, GlobalValues::IMG_EXTENTION);
-    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", imageFilePath);
-
-    image = new Image(imageFilePath, screen);
+    return cellsInRowCount;
 }
 
-bool Location::isLoaded()
+int Location::getHeight()
 {
-    return !(image->isEmpty());
+    return cellsInColCount;
 }
 
-void Location::draw(int xOffset, int yOffset)
+int Location::getCell(int x, int y)
 {
-
+    return matrix[y][x];
 }
+
+
+
+
+
+

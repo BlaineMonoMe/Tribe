@@ -47,8 +47,14 @@
 		</Linker>
 		<Unit filename="Entity/Location.cpp" />
 		<Unit filename="Entity/Location.h" />
+		<Unit filename="Entity/LocationScreen.cpp" />
+		<Unit filename="Entity/LocationScreen.h" />
+		<Unit filename="GlobalValues.cpp" />
+		<Unit filename="GlobalValues.h" />
 		<Unit filename="SDLwrapper/Image.cpp" />
 		<Unit filename="SDLwrapper/Image.h" />
+		<Unit filename="Utils/CoordsTranformer.cpp" />
+		<Unit filename="Utils/CoordsTranformer.h" />
 		<Unit filename="Utils/Logger.cpp" />
 		<Unit filename="Utils/Logger.h" />
 		<Unit filename="main.cpp" />

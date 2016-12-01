@@ -18,6 +18,8 @@ Image::~Image()
 
 void Image::load(char *filename, SDL_Surface *screen)
 {
+    this->screen = screen;
+
     SDL_Surface* loadedSurface = IMG_Load(filename);
     if(loadedSurface == NULL)
     {
@@ -42,12 +44,38 @@ bool Image::isEmpty()
     else return false;
 }
 
-void Image::draw(SDL_Rect *imageRect, SDL_Rect *screenRect, SDL_Surface *screen)
+void Image::draw(SDL_Rect *imageRect, SDL_Rect *screenRect)
 {
     if(surface != NULL)
     {
         SDL_BlitScaled(surface, imageRect, screen, screenRect);
     }
 }
+
+int Image::getWidth()
+{
+    if(surface != NULL)
+    {
+        return surface->w;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int Image::getHeight()
+{
+    if(surface != NULL)
+    {
+        return surface->h;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
 
 

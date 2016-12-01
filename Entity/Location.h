@@ -4,24 +4,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sstream>
 
 #include "Image.h"
+#include "Logger.h"
 #include "../GlobalValues.h"
+#include "LocationScreen.h"
 
 
+/**
+    Represents location (location data)
+*/
 class Location
 {
     public:
-        Location();
-        Location(char* loctionNumber, SDL_Surface *screen);
+        Location(char* loctionNumber);
         ~Location();
 
-        void load(char* locationNumber, SDL_Surface *screen);
-        bool isLoaded();
-        void draw(int xOffset, int yOffset);
+        int getWidth();
+        int getHeight();
+        int getCell(int x, int y);
 
     private:
-        Image *image = NULL;
+        char locationNumber[5] = {0};
+
+        int cellsInRowCount;
+        int cellsInColCount;
+        int **matrix;
 
 };
 
