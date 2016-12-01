@@ -17,7 +17,7 @@
 class LocationScreen
 {
     public:
-        LocationScreen(char* locationNumber, SDL_Surface* screen);
+        LocationScreen(char* locationNumber, SDL_Renderer *renderer);
         ~LocationScreen();
 
         void draw();

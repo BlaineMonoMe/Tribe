@@ -10,18 +10,19 @@ class Image
 {
     public:
         Image();
-        Image(char *filename, SDL_Surface *screen);
+        Image(char *filename, SDL_Renderer *renderer);
         ~Image();
-        bool isEmpty();
-        void load(char *filename, SDL_Surface *screen);
+        void load(char *filename, SDL_Renderer *renderer);
         void draw(SDL_Rect *imageRect, SDL_Rect *screenRect);
 
         int getWidth();
         int getHeight();
 
     private:
-        SDL_Surface *surface = NULL;
-        SDL_Surface *screen = NULL;
+        SDL_Renderer *renderer;
+        SDL_Texture *texture;
+        int width;
+        int height;
 };
 
 #endif // IMAGE_H

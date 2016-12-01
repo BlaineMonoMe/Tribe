@@ -3,60 +3,46 @@
 
 Image::Image(){}
 
-Image::Image(char *filename, SDL_Surface *screen)
+Image::Image(char *filename, SDL_Renderer *renderer)
 {
-    load(filename, screen);
+    load(filename, renderer);
 }
 
 Image::~Image()
 {
-    if(surface != NULL)
+    if(texture != NULL)
     {
-        SDL_FreeSurface(surface);
+        SDL_DestroyTexture(texture);
     }
 }
 
-void Image::load(char *filename, SDL_Surface *screen)
+void Image::load(char *filename, SDL_Renderer *renderer)
 {
-    this->screen = screen;
+    this->renderer = renderer;
 
     SDL_Surface* loadedSurface = IMG_Load(filename);
-    if(loadedSurface == NULL)
-    {
-        //Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", "load surface failed");
-    }
-    else
-    {
-        surface = SDL_ConvertSurface(loadedSurface, screen->format, NULL);
-        if(surface == NULL)
-        {
-            //Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", "load surface failed");
-        }
+    texture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
 
-        SDL_FreeSurface(loadedSurface);
-        //Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", "load successfully ended");
-    }
-}
+    width = loadedSurface->w;
+    height = loadedSurface->h;
 
-bool Image::isEmpty()
-{
-    if(surface == NULL) return true;
-    else return false;
+    SDL_FreeSurface(loadedSurface);
+
 }
 
 void Image::draw(SDL_Rect *imageRect, SDL_Rect *screenRect)
 {
-    if(surface != NULL)
+    if(texture != NULL)
     {
-        SDL_BlitScaled(surface, imageRect, screen, screenRect);
+        SDL_RenderCopy(renderer, texture, imageRect, screenRect);
     }
 }
 
 int Image::getWidth()
 {
-    if(surface != NULL)
+    if(texture != NULL)
     {
-        return surface->w;
+        return width;
     }
     else
     {
@@ -66,9 +52,9 @@ int Image::getWidth()
 
 int Image::getHeight()
 {
-    if(surface != NULL)
+    if(texture != NULL)
     {
-        return surface->h;
+        return height;
     }
     else
     {

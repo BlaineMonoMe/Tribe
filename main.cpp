@@ -23,25 +23,33 @@ int main(int argc, char** args)
     window = SDL_CreateWindow(GlobalValues::PROJECT_NAME, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                               GlobalValues::SCREEN_WIDTH, GlobalValues::SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
-    int imgFlags = IMG_INIT_JPG;
+    int imgFlags = IMG_INIT_JPG | IMG_INIT_PNG;
     IMG_Init(imgFlags);
 
-    screen = SDL_GetWindowSurface(window);
+    SDL_Renderer* renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED );
+    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
 
-    /**Image *fon = new Image("example1.jpg", screen);
-    fon->draw(NULL, NULL);
-    delete fon;*/
 
-    LocationScreen *ls = new LocationScreen("0", screen);
+    /*SDL_Surface* loadedSurface = IMG_Load("point.png");
+    SDL_Texture* gTexture = SDL_CreateTextureFromSurface( renderer, loadedSurface );
+    SDL_RenderClear( renderer );
+    SDL_RenderCopy( renderer, gTexture, NULL, NULL );
+    SDL_RenderPresent( renderer );*/
 
+
+
+    LocationScreen *ls = new LocationScreen("0", renderer);
     ls->draw();
-    //delete ls;
 
-    SDL_UpdateWindowSurface(window);
+    Image *img = new Image("point.png", renderer);
+    img->draw(NULL, NULL);
 
 
-    Image *img = new Image("point.jpg", screen);
-    //img->draw();
+
+    SDL_RenderPresent(renderer);
+
+
+
 
 
     while(quit == false)
@@ -64,17 +72,18 @@ int main(int argc, char** args)
 
                 SDL_Point p2 = CoordsTranformer::cellsToPixels(p.x, p.y);
 
-                SDL_Rect imgRect; imgRect.x = 0; imgRect.y = 0; imgRect.w = 5; imgRect.h = 5;
-                SDL_Rect scrRect; scrRect.x = p2.x; scrRect.y = p2.y; scrRect.w = 5; scrRect.h = 5;
+                SDL_Rect imgRect; imgRect.x = 77; imgRect.y = 19; imgRect.w = 7; imgRect.h = 7;
+                SDL_Rect scrRect; scrRect.x = p2.x; scrRect.y = p2.y; scrRect.w = 7; scrRect.h = 7;
 
                 ls->draw();
 
                 img->draw(&imgRect, &scrRect);
-                SDL_UpdateWindowSurface(window);
+
+                SDL_RenderPresent(renderer);
             }
             if(event.type == SDL_MOUSEBUTTONDOWN)
             {
-                int x, y;
+                /*int x, y;
 
                 SDL_GetMouseState( &x, &y );
 
@@ -89,7 +98,7 @@ int main(int argc, char** args)
 
                 Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", xx);
                 Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", yy);
-                Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", "----");
+                Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", "----");*/
             }
         }
     }
@@ -98,11 +107,8 @@ int main(int argc, char** args)
     delete img;
     delete ls;
 
-	SDL_FreeSurface(screen);
-	screen = NULL;
-
+	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
-	window = NULL;
 
 	IMG_Quit();
 	SDL_Quit();

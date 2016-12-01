@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1480538395 source:e:\c++\codeblocks\tribe\main.cpp
+1480625798 source:e:\c++\codeblocks\tribe\main.cpp
 	<SDL.h>
 	<stdio.h>
 	"Image.h"
@@ -333,12 +333,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1480526342 e:\c++\codeblocks\tribe\sdlwrapper\image.h
+1480625925 e:\c++\codeblocks\tribe\sdlwrapper\image.h
 	<SDL.h>
 	<SDL_image.h>
 	"Logger.h"
 
-1480526514 source:e:\c++\codeblocks\tribe\sdlwrapper\image.cpp
+1480625993 source:e:\c++\codeblocks\tribe\sdlwrapper\image.cpp
 	<stdio.h>
 	"Image.h"
 
@@ -368,7 +368,7 @@
 1480525998 e:\c++\codeblocks\tribe\globalvalues.h
 	<SDL.h>
 
-1480526216 e:\c++\codeblocks\tribe\entity\locationscreen.h
+1480626103 e:\c++\codeblocks\tribe\entity\locationscreen.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -376,10 +376,10 @@
 	"../GlobalValues.h"
 	"Image.h"
 
-1480527781 source:e:\c++\codeblocks\tribe\entity\locationscreen.cpp
+1480626177 source:e:\c++\codeblocks\tribe\entity\locationscreen.cpp
 	"LocationScreen.h"
 
-1480537421 source:e:\c++\codeblocks\tribe\utils\coordstranformer.cpp
+1480603816 source:e:\c++\codeblocks\tribe\utils\coordstranformer.cpp
 	"CoordsTranformer.h"
 
 1480600992 e:\c++\codeblocks\tribe\utils\coordstranformer.h

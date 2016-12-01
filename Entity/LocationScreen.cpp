@@ -1,6 +1,6 @@
 #include "LocationScreen.h"
 
-LocationScreen::LocationScreen(char* locationNumber, SDL_Surface *screen)
+LocationScreen::LocationScreen(char* locationNumber, SDL_Renderer *renderer)
 {
     char imageFilePath[80] = {0};
 
@@ -20,17 +20,14 @@ LocationScreen::LocationScreen(char* locationNumber, SDL_Surface *screen)
     locationRect->w = GlobalValues::SCREEN_WIDTH;
     locationRect->h = GlobalValues::SCREEN_HEIGHT;
 
-    image = new Image(imageFilePath, screen);
+    image = new Image(imageFilePath, renderer);
 }
 
 LocationScreen::~LocationScreen()
 {
-    if(image->isEmpty() == false)
-    {
-        delete image;
-        delete screenRect;
-        delete locationRect;
-    }
+    delete image;
+    delete screenRect;
+    delete locationRect;
 }
 
 void LocationScreen::draw()
