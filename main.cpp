@@ -5,6 +5,8 @@
 #include "LocationScreen.h"
 #include "GlobalValues.h"
 #include "CoordsTranformer.h"
+#include "AnimationData.h"
+#include "Animation.h"
 
 
 SDL_Window *window = NULL;
@@ -19,7 +21,7 @@ int main(int argc, char** args)
 
     SDL_Event event;
 
-    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     window = SDL_CreateWindow(GlobalValues::PROJECT_NAME, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                               GlobalValues::SCREEN_WIDTH, GlobalValues::SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
@@ -41,19 +43,34 @@ int main(int argc, char** args)
     LocationScreen *ls = new LocationScreen("0", renderer);
     ls->draw();
 
-    Image *img = new Image("point.png", renderer);
-    img->draw(NULL, NULL);
+    AnimationData *ad = new AnimationData("workImages/Animation4Frames.png", 4, renderer);
 
 
+    Animation *a = new Animation(ad, 300);
+    SDL_Rect *r = new SDL_Rect();
+            r->x = 302;
+            r->y = 26;
+            r->w = 110;
+            r->h = 110;
+            a->setScreenRect(r);
+    a->start();
 
     SDL_RenderPresent(renderer);
 
-
-
-
-
     while(quit == false)
     {
+
+        //SDL_Delay(1);
+        int currTime = SDL_GetTicks();
+
+        if(a->isTime(currTime))
+        {
+            ls->draw();
+            a->execute();
+            SDL_RenderPresent(renderer);
+        }
+
+
         while(SDL_PollEvent(&event) != 0)
         {
             if(event.type == SDL_KEYDOWN)
@@ -77,7 +94,6 @@ int main(int argc, char** args)
 
                 ls->draw();
 
-                img->draw(&imgRect, &scrRect);
 
                 SDL_RenderPresent(renderer);
             }
@@ -104,7 +120,7 @@ int main(int argc, char** args)
     }
 
 
-    delete img;
+    delete ad;
     delete ls;
 
 	SDL_DestroyRenderer(renderer);

@@ -51,8 +51,14 @@
 		<Unit filename="Entity/LocationScreen.h" />
 		<Unit filename="GlobalValues.cpp" />
 		<Unit filename="GlobalValues.h" />
+		<Unit filename="SDLwrapper/Animation.cpp" />
+		<Unit filename="SDLwrapper/Animation.h" />
+		<Unit filename="SDLwrapper/AnimationData.cpp" />
+		<Unit filename="SDLwrapper/AnimationData.h" />
 		<Unit filename="SDLwrapper/Image.cpp" />
 		<Unit filename="SDLwrapper/Image.h" />
+		<Unit filename="SDLwrapper/Timer.cpp" />
+		<Unit filename="SDLwrapper/Timer.h" />
 		<Unit filename="Utils/CoordsTranformer.cpp" />
 		<Unit filename="Utils/CoordsTranformer.h" />
 		<Unit filename="Utils/Logger.cpp" />

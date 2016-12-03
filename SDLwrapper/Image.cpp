@@ -20,14 +20,8 @@ void Image::load(char *filename, SDL_Renderer *renderer)
 {
     this->renderer = renderer;
 
-    SDL_Surface* loadedSurface = IMG_Load(filename);
-    texture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-
-    width = loadedSurface->w;
-    height = loadedSurface->h;
-
-    SDL_FreeSurface(loadedSurface);
-
+    surface = IMG_Load(filename);
+    texture = SDL_CreateTextureFromSurface(renderer, surface);
 }
 
 void Image::draw(SDL_Rect *imageRect, SDL_Rect *screenRect)
@@ -40,9 +34,9 @@ void Image::draw(SDL_Rect *imageRect, SDL_Rect *screenRect)
 
 int Image::getWidth()
 {
-    if(texture != NULL)
+    if(surface != NULL)
     {
-        return width;
+        return surface->w;
     }
     else
     {
@@ -52,9 +46,9 @@ int Image::getWidth()
 
 int Image::getHeight()
 {
-    if(texture != NULL)
+    if(surface != NULL)
     {
-        return height;
+        surface->h;
     }
     else
     {

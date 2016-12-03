@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1480625798 source:e:\c++\codeblocks\tribe\main.cpp
+1480787028 source:e:\c++\codeblocks\tribe\main.cpp
 	<SDL.h>
 	<stdio.h>
 	"Image.h"
@@ -7,6 +7,8 @@
 	"LocationScreen.h"
 	"GlobalValues.h"
 	"CoordsTranformer.h"
+	"AnimationData.h"
+	"Animation.h"
 
 1476935894 e:\c++\sdl\sdl2-2.0.5\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -333,12 +335,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1480625925 e:\c++\codeblocks\tribe\sdlwrapper\image.h
+1480628670 e:\c++\codeblocks\tribe\sdlwrapper\image.h
 	<SDL.h>
 	<SDL_image.h>
 	"Logger.h"
 
-1480625993 source:e:\c++\codeblocks\tribe\sdlwrapper\image.cpp
+1480667256 source:e:\c++\codeblocks\tribe\sdlwrapper\image.cpp
 	<stdio.h>
 	"Image.h"
 
@@ -387,4 +389,25 @@
 	<math.h>
 	"Logger.h"
 	"../GlobalValues.h"
+
+1480668048 source:e:\c++\codeblocks\tribe\sdlwrapper\animationdata.cpp
+	"AnimationData.h"
+
+1480667430 e:\c++\codeblocks\tribe\sdlwrapper\animationdata.h
+	<SDL.h>
+	"Image.h"
+
+1480782474 source:e:\c++\codeblocks\tribe\sdlwrapper\animation.cpp
+	"Animation.h"
+
+1480760993 e:\c++\codeblocks\tribe\sdlwrapper\animation.h
+	<SDL.h>
+	"AnimationData.h"
+	"Timer.h"
+
+1480761598 source:e:\c++\codeblocks\tribe\sdlwrapper\timer.cpp
+	"Timer.h"
+
+1480761002 e:\c++\codeblocks\tribe\sdlwrapper\timer.h
+	<SDL.h>
 
