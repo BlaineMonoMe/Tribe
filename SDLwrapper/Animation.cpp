@@ -21,6 +21,12 @@ void Animation::setScreenRect(SDL_Rect *screenRect)
     this->screenRect->h = screenRect->h;
 }
 
+void Animation::setScreenCoords(int screenX, int screenY)
+{
+    this->screenRect->x = screenX;
+    this->screenRect->y = screenY;
+}
+
 void Animation::reset()
 {
     currentFrameNumber = 0;

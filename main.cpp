@@ -7,6 +7,7 @@
 #include "CoordsTranformer.h"
 #include "AnimationData.h"
 #include "Animation.h"
+#include "LocationScreenMover.h"
 
 
 SDL_Window *window = NULL;
@@ -43,17 +44,54 @@ int main(int argc, char** args)
     LocationScreen *ls = new LocationScreen("0", renderer);
     ls->draw();
 
+    LocationScreenMover *lsm = new LocationScreenMover(ls, 30);
+
+
+
     AnimationData *ad = new AnimationData("workImages/Animation4Frames.png", 4, renderer);
 
 
+    class AnimationMover : public Timer
+    {
+    public:
+        Animation *a;
+        int beginX;
+        SDL_Rect *rect;
+        AnimationMover(int interval, Animation *a, SDL_Rect *rect) : Timer(interval)
+        {
+            this->a = a;
+            this->rect = rect;
+            beginX = rect->x;
+        }
+
+        void execute()
+        {
+            if(rect->x == beginX + (42 * 20))
+            {
+                stop();
+                a->stop();
+                Image *ii;
+                beginX += 38;
+                return;
+                //ii = new Image("workImages/right_stand.png", renderer);
+
+            }
+            rect->x += 2;
+            a->setScreenRect(rect);
+        }
+    };
+
     Animation *a = new Animation(ad, 300);
     SDL_Rect *r = new SDL_Rect();
-            r->x = 302;
-            r->y = 26;
-            r->w = 110;
-            r->h = 110;
+            r->x = 120;
+            r->y = 27;
+            r->w = 120;
+            r->h = 120;
             a->setScreenRect(r);
-    a->start();
+    //a->start();
+
+    AnimationMover *am = new AnimationMover(50, a, r);
+    //am->start();
 
     SDL_RenderPresent(renderer);
 
@@ -63,12 +101,31 @@ int main(int argc, char** args)
         //SDL_Delay(1);
         int currTime = SDL_GetTicks();
 
-        if(a->isTime(currTime))
+        if(a->isTime(currTime) && a->getIsStarted())
         {
             ls->draw();
             a->execute();
             SDL_RenderPresent(renderer);
         }
+
+
+        if(am->isTime(currTime) && am->getIsStarted())
+        {
+            am->execute();
+            ls->draw();
+            a->draw();
+            SDL_RenderPresent(renderer);
+        }
+
+
+        if(lsm->getIsStarted() && lsm->isTime(currTime))
+        {
+            lsm->execute();
+            ls->draw();
+            SDL_RenderPresent(renderer);
+        }
+
+
 
 
         while(SDL_PollEvent(&event) != 0)
@@ -85,36 +142,12 @@ int main(int argc, char** args)
                 int x, y;
                 SDL_GetMouseState(&x, &y);
 
-                SDL_Point p = CoordsTranformer::pixelsToCells(x, y);
-
-                SDL_Point p2 = CoordsTranformer::cellsToPixels(p.x, p.y);
-
-                SDL_Rect imgRect; imgRect.x = 77; imgRect.y = 19; imgRect.w = 7; imgRect.h = 7;
-                SDL_Rect scrRect; scrRect.x = p2.x; scrRect.y = p2.y; scrRect.w = 7; scrRect.h = 7;
-
-                ls->draw();
-
-
-                SDL_RenderPresent(renderer);
+                lsm->checkNeedToMove(x, y);
             }
             if(event.type == SDL_MOUSEBUTTONDOWN)
             {
-                /*int x, y;
-
-                SDL_GetMouseState( &x, &y );
-
-
-                char xx[10] = {0};
-                char yy[10] = {0};
-
-                SDL_Point p = CoordsTranformer::pixelsToCells(x, y);
-
-                itoa(p.x, xx, 10);
-                itoa(p.y, yy, 10);
-
-                Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", xx);
-                Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", yy);
-                Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", "----");*/
+                a->start();
+                am->start();
             }
         }
     }
@@ -122,6 +155,7 @@ int main(int argc, char** args)
 
     delete ad;
     delete ls;
+    delete lsm;
 
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);

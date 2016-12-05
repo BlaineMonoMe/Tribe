@@ -19,6 +19,9 @@ class GlobalValues
         static float CELL_HEIGHT;
         static int CELLS_PER_SCREEN_X;
         static int CELLS_PER_SCREEN_Y;
+
+        static int SCREEN_EDGE_WIDTH;
+        static int SCREEN_MOVE_SPEED;
 };
 
 enum Direction {LEFT_UP, UP, RIGHT_UP, RIGHT, RIGHT_DOWN, DOWN, LEFT_DOWN, LEFT};

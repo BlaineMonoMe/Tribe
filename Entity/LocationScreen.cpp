@@ -44,32 +44,56 @@ void LocationScreen::move(Direction direction, int delta)
 {
     switch(direction)
     {
+        case LEFT_UP:
+        {
+            yOffset -= delta;
+            xOffset -= delta;
+            break;
+        }
         case UP:
         {
             yOffset -= delta;
-            if(yOffset < 0) yOffset = 0;
+            break;
+        }
+        case RIGHT_UP:
+        {
+            yOffset -= delta;
+            xOffset += delta;
             break;
         }
         case RIGHT:
         {
             xOffset += delta;
-            if(xOffset + GlobalValues::SCREEN_WIDTH > image->getWidth()) xOffset = image->getWidth() - GlobalValues::SCREEN_WIDTH;
+            break;
+        }
+        case RIGHT_DOWN:
+        {
+            xOffset += delta;
+            yOffset += delta;
             break;
         }
         case DOWN:
         {
             yOffset += delta;
-            if(yOffset + GlobalValues::SCREEN_HEIGHT > image->getHeight()) yOffset = image->getHeight() - GlobalValues::SCREEN_HEIGHT;
+            break;
+        }
+        case LEFT_DOWN:
+        {
+            yOffset += delta;
+            xOffset -= delta;
             break;
         }
         case LEFT:
         {
             xOffset -= delta;
-            if(xOffset < 0) xOffset = 0;
             break;
         }
-        default: {}
     }
+
+    if(yOffset < 0) yOffset = 0;
+    if(xOffset + GlobalValues::SCREEN_WIDTH > image->getWidth()) xOffset = image->getWidth() - GlobalValues::SCREEN_WIDTH;
+    if(yOffset + GlobalValues::SCREEN_HEIGHT > image->getHeight()) {yOffset = image->getHeight() - GlobalValues::SCREEN_HEIGHT;}
+    if(xOffset < 0) xOffset = 0;
 }
 
 

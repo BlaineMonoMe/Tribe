@@ -16,6 +16,7 @@ class Animation : public Timer
         void reset();
 
         void setScreenRect(SDL_Rect *screenRect);
+        void setScreenCoords(int screenX, int screenY);
         void draw();
 
     private:

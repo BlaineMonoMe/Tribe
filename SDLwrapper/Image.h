@@ -14,7 +14,6 @@ class Image
         ~Image();
         void load(char *filename, SDL_Renderer *renderer);
         void draw(SDL_Rect *imageRect, SDL_Rect *screenRect);
-        Image* getSubimage(SDL_Rect *subimageRect);
 
         int getWidth();
         int getHeight();
@@ -23,6 +22,8 @@ class Image
         SDL_Renderer *renderer;
         SDL_Texture *texture;
         SDL_Surface *surface;
+        int height;
+        int width;
 };
 
 #endif // IMAGE_H

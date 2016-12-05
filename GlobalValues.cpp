@@ -11,3 +11,6 @@ float GlobalValues::CELL_HEIGHT = 25.0;
 float GlobalValues::CELL_WIDTH = 42.0; // OR 43.3???
 int GlobalValues::CELLS_PER_SCREEN_X = SCREEN_WIDTH / CELL_WIDTH;
 int GlobalValues::CELLS_PER_SCREEN_Y = SCREEN_HEIGHT / CELL_HEIGHT;
+
+int GlobalValues::SCREEN_EDGE_WIDTH = 20;
+int GlobalValues::SCREEN_MOVE_SPEED = 30;

@@ -12,6 +12,7 @@ Image::~Image()
 {
     if(texture != NULL)
     {
+        SDL_FreeSurface(surface);
         SDL_DestroyTexture(texture);
     }
 }
@@ -21,6 +22,9 @@ void Image::load(char *filename, SDL_Renderer *renderer)
     this->renderer = renderer;
 
     surface = IMG_Load(filename);
+    this->width = surface->w;
+    this->height = surface->h;
+
     texture = SDL_CreateTextureFromSurface(renderer, surface);
 }
 
@@ -36,7 +40,7 @@ int Image::getWidth()
 {
     if(surface != NULL)
     {
-        return surface->w;
+        return width;
     }
     else
     {
@@ -48,7 +52,7 @@ int Image::getHeight()
 {
     if(surface != NULL)
     {
-        surface->h;
+        return height;
     }
     else
     {
