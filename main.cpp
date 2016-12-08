@@ -1,14 +1,16 @@
 #include <SDL.h>
 #include <stdio.h>
 #include "Image.h"
-#include "Location.h"
+#include "LocationData.h"
 #include "LocationScreen.h"
 #include "GlobalValues.h"
 #include "CoordsTranformer.h"
 #include "AnimationData.h"
 #include "Animation.h"
 #include "LocationScreenMover.h"
-
+#include "Container.h"
+#include "UnitsHolder.h"
+#include "FileReader.h"
 
 SDL_Window *window = NULL;
 SDL_Surface *screen = NULL;
@@ -38,6 +40,15 @@ int main(int argc, char** args)
     SDL_RenderClear( renderer );
     SDL_RenderCopy( renderer, gTexture, NULL, NULL );
     SDL_RenderPresent( renderer );*/
+
+
+    UnitsHolder *uh = new UnitsHolder("0");
+    Obstacle *c = uh->getObstacle(1);
+    SDL_Rect *stonesCount = c->getRectToDrawTo();
+    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", stonesCount->w);
+
+    delete uh;
+
 
 
 

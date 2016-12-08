@@ -1,15 +1,18 @@
 # depslib dependency file v1.0
-1480966408 source:e:\c++\codeblocks\tribe\main.cpp
+1481220158 source:e:\c++\codeblocks\tribe\main.cpp
 	<SDL.h>
 	<stdio.h>
 	"Image.h"
-	"Location.h"
+	"LocationData.h"
 	"LocationScreen.h"
 	"GlobalValues.h"
 	"CoordsTranformer.h"
 	"AnimationData.h"
 	"Animation.h"
 	"LocationScreenMover.h"
+	"Container.h"
+	"UnitsHolder.h"
+	"FileReader.h"
 
 1476935894 e:\c++\sdl\sdl2-2.0.5\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -345,11 +348,11 @@
 	<stdio.h>
 	"Image.h"
 
-1480423117 e:\c++\codeblocks\tribe\utils\logger.h
+1481199457 e:\c++\codeblocks\tribe\utils\logger.h
 	<iostream>
 	<fstream>
 
-1480501521 source:e:\c++\codeblocks\tribe\utils\logger.cpp
+1481199478 source:e:\c++\codeblocks\tribe\utils\logger.cpp
 	"Logger.h"
 
 1480525599 source:e:\c++\codeblocks\tribe\entity\location.cpp
@@ -365,10 +368,10 @@
 	"../GlobalValues.h"
 	"LocationScreen.h"
 
-1480966302 source:e:\c++\codeblocks\tribe\globalvalues.cpp
+1481218951 source:e:\c++\codeblocks\tribe\globalvalues.cpp
 	"GlobalValues.h"
 
-1480961422 e:\c++\codeblocks\tribe\globalvalues.h
+1481218911 e:\c++\codeblocks\tribe\globalvalues.h
 	<SDL.h>
 
 1480626103 e:\c++\codeblocks\tribe\entity\locationscreen.h
@@ -418,4 +421,76 @@
 1480961044 e:\c++\codeblocks\tribe\entity\locationscreenmover.h
 	"Timer.h"
 	"LocationScreen.h"
+
+1481186086 source:e:\c++\codeblocks\tribe\entity\locationdata.cpp
+	"LocationData.h"
+
+1480525122 e:\c++\codeblocks\tribe\entity\locationdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sstream>
+	"Image.h"
+	"Logger.h"
+	"../GlobalValues.h"
+	"LocationScreen.h"
+
+1481183380 source:e:\c++\codeblocks\tribe\entity\unit\ammunitionitem.cpp
+	"AmmunitionItem.h"
+
+1481183386 e:\c++\codeblocks\tribe\entity\unit\ammunitionitem.h
+
+1481217067 source:e:\c++\codeblocks\tribe\entity\unit\unit.cpp
+	"Unit.h"
+
+1481217534 e:\c++\codeblocks\tribe\entity\unit\unit.h
+
+1481216354 source:e:\c++\codeblocks\tribe\entity\unit\container.cpp
+	"Container.h"
+
+1481216325 e:\c++\codeblocks\tribe\entity\unit\container.h
+	<string>
+	<vector>
+	"AmmunitionItem.h"
+	"Unit.h"
+	"FileReader.h"
+	"../../GlobalValues.h"
+	"Logger.h"
+
+1481198980 source:e:\c++\codeblocks\tribe\utils\filereader.cpp
+	"FileReader.h"
+
+1481198842 e:\c++\codeblocks\tribe\utils\filereader.h
+	<string.h>
+	<fstream>
+	<sstream>
+	<stdlib.h>
+	"Logger.h"
+
+1481187941 source:e:\c++\codeblocks\tribe\utils\filereader1.cpp
+	"FileReader1.h"
+
+1481188041 e:\c++\codeblocks\tribe\utils\filereader1.h
+	<string.h>
+	<fstream>
+	<sstream>
+	<stdlib.h>
+
+1481220091 source:e:\c++\codeblocks\tribe\entity\unitsholder.cpp
+	"UnitsHolder.h"
+
+1481219274 e:\c++\codeblocks\tribe\entity\unitsholder.h
+	<vector>
+	"Container.h"
+	"Obstacle.h"
+	"FileReader.h"
+	"Logger.h"
+
+1481219671 source:e:\c++\codeblocks\tribe\entity\unit\obstacle.cpp
+	"Obstacle.h"
+
+1481218185 e:\c++\codeblocks\tribe\entity\unit\obstacle.h
+	<SDL.h>
+	"Unit.h"
+	"FileReader.h"
 

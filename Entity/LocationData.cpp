@@ -1,4 +1,4 @@
-#include "Location.h"
+#include "LocationData.h"
 
 Location::Location(char* locationNumber)
 {

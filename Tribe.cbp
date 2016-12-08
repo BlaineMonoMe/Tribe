@@ -16,6 +16,7 @@
 					<Add directory="SDLwrapper" />
 					<Add directory="Utils" />
 					<Add directory="Entity" />
+					<Add directory="Entity/Unit" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -28,6 +29,7 @@
 					<Add directory="SDLwrapper" />
 					<Add directory="Utils" />
 					<Add directory="Entity" />
+					<Add directory="Entity/Unit" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -45,10 +47,20 @@
 			<Add directory="E:/C++/SDL/SDL2-2.0.5/i686-w64-mingw32/lib" />
 			<Add directory="E:/C++/SDL/SDL2_image-2.0.1/i686-w64-mingw32/lib" />
 		</Linker>
-		<Unit filename="Entity/Location.cpp" />
-		<Unit filename="Entity/Location.h" />
+		<Unit filename="Entity/LocationData.cpp" />
+		<Unit filename="Entity/LocationData.h" />
 		<Unit filename="Entity/LocationScreen.cpp" />
 		<Unit filename="Entity/LocationScreen.h" />
+		<Unit filename="Entity/LocationScreenMover.cpp" />
+		<Unit filename="Entity/LocationScreenMover.h" />
+		<Unit filename="Entity/Unit/AmmunitionItem.cpp" />
+		<Unit filename="Entity/Unit/AmmunitionItem.h" />
+		<Unit filename="Entity/Unit/Container.cpp" />
+		<Unit filename="Entity/Unit/Container.h" />
+		<Unit filename="Entity/Unit/Unit.cpp" />
+		<Unit filename="Entity/Unit/Unit.h" />
+		<Unit filename="Entity/UnitsHolder.cpp" />
+		<Unit filename="Entity/UnitsHolder.h" />
 		<Unit filename="GlobalValues.cpp" />
 		<Unit filename="GlobalValues.h" />
 		<Unit filename="SDLwrapper/Animation.cpp" />
@@ -61,6 +73,8 @@
 		<Unit filename="SDLwrapper/Timer.h" />
 		<Unit filename="Utils/CoordsTranformer.cpp" />
 		<Unit filename="Utils/CoordsTranformer.h" />
+		<Unit filename="Utils/FileReader.cpp" />
+		<Unit filename="Utils/FileReader.h" />
 		<Unit filename="Utils/Logger.cpp" />
 		<Unit filename="Utils/Logger.h" />
 		<Unit filename="main.cpp" />

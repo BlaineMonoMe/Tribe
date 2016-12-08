@@ -4,6 +4,8 @@ int GlobalValues::SCREEN_WIDTH = 1366;
 int GlobalValues::SCREEN_HEIGHT = 768;
 char *GlobalValues::PROJECT_NAME = "Tribe";
 char *GlobalValues::LOCATIONS_DIR = "resources\\locations\\";
+char *GlobalValues::ITEMS_DIR_FILE = "\\items\\containers.txt";
+char *GlobalValues::OBSTACLES_DIR_FILE = "\\obstacles\\obstacles.txt";
 char *GlobalValues::LOCATION_IMG_FILENAME = "\\img.jpg";
 char *GlobalValues::LOCATION_TXT_FILENAME = "\\data.txt";
 

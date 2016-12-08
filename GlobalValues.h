@@ -11,6 +11,8 @@ class GlobalValues
         static int SCREEN_HEIGHT;
         static char *PROJECT_NAME;
         static char *LOCATIONS_DIR;
+        static char *ITEMS_DIR_FILE;
+        static char *OBSTACLES_DIR_FILE;
         static char *LOCATION_IMG_FILENAME;
         static char *LOCATION_TXT_FILENAME;
         //TODO: add static SCREEN_RECT and init it
