@@ -17,6 +17,7 @@
 					<Add directory="Utils" />
 					<Add directory="Entity" />
 					<Add directory="Entity/Unit" />
+					<Add directory="Entity/Unit/Abstract" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -30,6 +31,7 @@
 					<Add directory="Utils" />
 					<Add directory="Entity" />
 					<Add directory="Entity/Unit" />
+					<Add directory="Entity/Unit/Abstract" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -53,10 +55,18 @@
 		<Unit filename="Entity/LocationScreen.h" />
 		<Unit filename="Entity/LocationScreenMover.cpp" />
 		<Unit filename="Entity/LocationScreenMover.h" />
+		<Unit filename="Entity/Unit/Abstract/AbstractAttack.cpp" />
+		<Unit filename="Entity/Unit/Abstract/AbstractAttack.h" />
+		<Unit filename="Entity/Unit/Abstract/AbstractCreature.cpp" />
+		<Unit filename="Entity/Unit/Abstract/AbstractCreature.h" />
+		<Unit filename="Entity/Unit/Abstract/AbstractWeapon.cpp" />
+		<Unit filename="Entity/Unit/Abstract/AbstractWeapon.h" />
 		<Unit filename="Entity/Unit/AmmunitionItem.cpp" />
 		<Unit filename="Entity/Unit/AmmunitionItem.h" />
 		<Unit filename="Entity/Unit/Container.cpp" />
 		<Unit filename="Entity/Unit/Container.h" />
+		<Unit filename="Entity/Unit/Obstacle.cpp" />
+		<Unit filename="Entity/Unit/Obstacle.h" />
 		<Unit filename="Entity/Unit/Unit.cpp" />
 		<Unit filename="Entity/Unit/Unit.h" />
 		<Unit filename="Entity/UnitsHolder.cpp" />

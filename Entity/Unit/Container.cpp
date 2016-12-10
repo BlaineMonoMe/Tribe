@@ -30,6 +30,7 @@ void Container::draw()
 void Container::load(FileReader *fileReader)
 {
     fileReader->readLine(); // read service data - it is not used
+    willStayAnyway = fileReader->readInt();
     xCell = fileReader->readInt();
     yCell = fileReader->readInt();
     pathToSmallImage = fileReader->readLine();
@@ -66,6 +67,7 @@ void Container::load(FileReader *fileReader)
 
 int Container::getLitersOfWater() {return litersOfWater;}
 std::string Container::getPathToSmallImage() {return pathToSmallImage;}
+bool Container::getWillStayAnyway() {return willStayAnyway;}
 
 int Container::getWeaponType(int index) {return weapons->at(index);}
 int Container::getWeaponTypesCount() {return weapons->size();}

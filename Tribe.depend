@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1481220158 source:e:\c++\codeblocks\tribe\main.cpp
+1481384414 source:e:\c++\codeblocks\tribe\main.cpp
 	<SDL.h>
 	<stdio.h>
 	"Image.h"
@@ -13,6 +13,8 @@
 	"Container.h"
 	"UnitsHolder.h"
 	"FileReader.h"
+	"AbstractWeapon.h"
+	"AbstractDataHolder.h"
 
 1476935894 e:\c++\sdl\sdl2-2.0.5\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -368,10 +370,10 @@
 	"../GlobalValues.h"
 	"LocationScreen.h"
 
-1481218951 source:e:\c++\codeblocks\tribe\globalvalues.cpp
+1481399297 source:e:\c++\codeblocks\tribe\globalvalues.cpp
 	"GlobalValues.h"
 
-1481218911 e:\c++\codeblocks\tribe\globalvalues.h
+1481399256 e:\c++\codeblocks\tribe\globalvalues.h
 	<SDL.h>
 
 1480626103 e:\c++\codeblocks\tribe\entity\locationscreen.h
@@ -445,10 +447,10 @@
 
 1481217534 e:\c++\codeblocks\tribe\entity\unit\unit.h
 
-1481216354 source:e:\c++\codeblocks\tribe\entity\unit\container.cpp
+1481292391 source:e:\c++\codeblocks\tribe\entity\unit\container.cpp
 	"Container.h"
 
-1481216325 e:\c++\codeblocks\tribe\entity\unit\container.h
+1481292366 e:\c++\codeblocks\tribe\entity\unit\container.h
 	<string>
 	<vector>
 	"AmmunitionItem.h"
@@ -476,14 +478,15 @@
 	<sstream>
 	<stdlib.h>
 
-1481220091 source:e:\c++\codeblocks\tribe\entity\unitsholder.cpp
+1481399578 source:e:\c++\codeblocks\tribe\entity\unitsholder.cpp
 	"UnitsHolder.h"
 
-1481219274 e:\c++\codeblocks\tribe\entity\unitsholder.h
+1481399802 e:\c++\codeblocks\tribe\entity\unitsholder.h
 	<vector>
 	"Container.h"
 	"Obstacle.h"
 	"FileReader.h"
+	"Enemy.h"
 	"Logger.h"
 
 1481219671 source:e:\c++\codeblocks\tribe\entity\unit\obstacle.cpp
@@ -493,4 +496,55 @@
 	<SDL.h>
 	"Unit.h"
 	"FileReader.h"
+
+1481301890 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractattack.cpp
+	"AbstractAttack.h"
+
+1481366251 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractattack.h
+
+1481371926 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractweapon.cpp
+	"AbstractWeapon.h"
+
+1481371201 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractweapon.h
+	"AbstractAttack.h"
+	"FileReader.h"
+
+1481366531 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractcreature.cpp
+	"AbstractCreature.h"
+
+1481366380 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractcreature.h
+
+1481384160 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractenemy.cpp
+	"AbstractEnemy.h"
+
+1481384137 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractenemy.h
+	"AbstractAttack.h"
+	"AbstractCreature.h"
+	"FileReader.h"
+
+1481384055 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractdataholder.cpp
+	"AbstractDataHolder.h"
+
+1481383514 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractdataholder.h
+	<vector>
+	"FileReader.h"
+	"AbstractWeapon.h"
+	"AbstractEnemy.h"
+	"../../../GlobalValues.h"
+
+1481386474 source:e:\c++\codeblocks\tribe\entity\unit\mainhero.cpp
+	"MainHero.h"
+
+1481386358 e:\c++\codeblocks\tribe\entity\unit\mainhero.h
+	"AbstractCreature.h"
+	"Unit.h"
+	"../../GlobalValues.h"
+
+1481399147 e:\c++\codeblocks\tribe\entity\unit\enemy.h
+	"Unit.h"
+	"AbstractEnemy.h"
+	"FileReader.h"
+
+1481399791 source:e:\c++\codeblocks\tribe\entity\unit\enemy.cpp
+	"Enemy.h"
 

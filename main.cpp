@@ -11,6 +11,8 @@
 #include "Container.h"
 #include "UnitsHolder.h"
 #include "FileReader.h"
+#include "AbstractWeapon.h"
+#include "AbstractDataHolder.h"
 
 SDL_Window *window = NULL;
 SDL_Surface *screen = NULL;
@@ -42,12 +44,24 @@ int main(int argc, char** args)
     SDL_RenderPresent( renderer );*/
 
 
+    AbstractDataHolder *adh = new AbstractDataHolder();
+
+    AbstractEnemy *ae = adh->getAbstractEnemyByType(1);
+    AbstractWeapon *aw = adh->getAbstractWeaponByType(1);
+
+    int z = aw->getPower();
+
+    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", z);
+
+    delete adh;
+
     UnitsHolder *uh = new UnitsHolder("0");
-    Obstacle *c = uh->getObstacle(1);
-    SDL_Rect *stonesCount = c->getRectToDrawTo();
-    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", stonesCount->w);
 
     delete uh;
+
+
+
+
 
 
 

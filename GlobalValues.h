@@ -13,8 +13,11 @@ class GlobalValues
         static char *LOCATIONS_DIR;
         static char *ITEMS_DIR_FILE;
         static char *OBSTACLES_DIR_FILE;
+        static char *ENEMIES_DIR_FILE;
         static char *LOCATION_IMG_FILENAME;
         static char *LOCATION_TXT_FILENAME;
+        static char *ABSTRACT_WEAPON_DIR_FILE;
+        static char *ABSTRACT_ENEMY_DIR_FILE;
         //TODO: add static SCREEN_RECT and init it
 
         static float CELL_WIDTH;

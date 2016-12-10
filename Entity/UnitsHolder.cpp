@@ -12,6 +12,7 @@ void UnitsHolder::load(char *locationNumber)
     units = new std::vector<Unit*>();
     loadContainers(locationNumber);
     loadObstacles(locationNumber);
+    loadEnemies(locationNumber);
 }
 
 UnitsHolder::~UnitsHolder()
@@ -32,6 +33,15 @@ UnitsHolder::~UnitsHolder()
             delete obstacles->at(i);
         }
         delete obstacles;
+    }
+
+    if(enemies != NULL)
+    {
+        for(int i = 0; i < enemies->size(); i++)
+        {
+            delete enemies->at(i);
+        }
+        delete enemies;
     }
 
 
@@ -79,6 +89,29 @@ void UnitsHolder::loadObstacles(char *locationNumber)
         Obstacle *obstacle = new Obstacle(fileReader);
         obstacles->push_back(obstacle);
         units->push_back(obstacle);
+    }
+
+    delete fileReader;
+}
+
+void UnitsHolder::loadEnemies(char *locationNumber)
+{
+
+    char dataFilePath[80] = {0};
+    strcat(dataFilePath, GlobalValues::LOCATIONS_DIR);
+    strcat(dataFilePath, locationNumber);
+    strcat(dataFilePath, GlobalValues::ENEMIES_DIR_FILE);
+
+    FileReader *fileReader = new FileReader(dataFilePath);
+
+    int enemiesCount = fileReader->readInt();
+    enemies = new std::vector<Enemy*>();
+
+    for(int i = 0; i < enemiesCount; i++)
+    {
+        Enemy *enemy = new Enemy(fileReader);
+        enemies->push_back(enemy);
+        units->push_back(enemy);
     }
 
     delete fileReader;

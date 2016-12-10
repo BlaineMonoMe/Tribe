@@ -24,6 +24,7 @@ class Container : public Unit
 
         std::string getPathToSmallImage();
         int getLitersOfWater();
+        bool getWillStayAnyway();
 
         int getWeaponType(int index);
         int getWeaponTypesCount();
@@ -38,6 +39,7 @@ class Container : public Unit
         int getFoodsCount();
 
     private:
+        bool willStayAnyway = false;
         std::string pathToSmallImage;
         int litersOfWater;
         std::vector<int> *weapons = NULL;
