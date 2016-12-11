@@ -13,6 +13,7 @@
 #include "FileReader.h"
 #include "AbstractWeapon.h"
 #include "AbstractDataHolder.h"
+#include "InterCellPixelsCalculator.h"
 
 SDL_Window *window = NULL;
 SDL_Surface *screen = NULL;
@@ -51,13 +52,18 @@ int main(int argc, char** args)
 
     int z = aw->getPower();
 
-    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", z);
+    //Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", z);
 
     delete adh;
 
     UnitsHolder *uh = new UnitsHolder("0");
 
     delete uh;
+
+
+    SDL_Point p = InterCellPixelsCalculator::getInterCellPixel(RIGHT_DOWN, 98, 100);
+    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", p.x);
+    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", p.y);
 
 
 
@@ -171,8 +177,16 @@ int main(int argc, char** args)
             }
             if(event.type == SDL_MOUSEBUTTONDOWN)
             {
-                a->start();
-                am->start();
+                int x, y;
+                SDL_GetMouseState(&x, &y);
+
+                SDL_Point p = CoordsTranformer::pixelsToCells(x, y);
+                SDL_Point p2 = CoordsTranformer::cellsToPixels(p.x, p.y);
+                Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", p2.x);
+                Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", p2.y);
+
+                //a->start();
+                //am->start();
             }
         }
     }

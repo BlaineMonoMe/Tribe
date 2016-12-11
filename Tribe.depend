@@ -1,20 +1,21 @@
 # depslib dependency file v1.0
-1481384414 source:e:\c++\codeblocks\tribe\main.cpp
-	<SDL.h>
-	<stdio.h>
-	"Image.h"
+1481186086 source:e:\c++\codeblocks\tribe\entity\locationdata.cpp
 	"LocationData.h"
+
+1480525122 e:\c++\codeblocks\tribe\entity\locationdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sstream>
+	"Image.h"
+	"Logger.h"
+	"../GlobalValues.h"
 	"LocationScreen.h"
-	"GlobalValues.h"
-	"CoordsTranformer.h"
-	"AnimationData.h"
-	"Animation.h"
-	"LocationScreenMover.h"
-	"Container.h"
-	"UnitsHolder.h"
-	"FileReader.h"
-	"AbstractWeapon.h"
-	"AbstractDataHolder.h"
+
+1480966265 e:\c++\codeblocks\tribe\sdlwrapper\image.h
+	<SDL.h>
+	<SDL_image.h>
+	"Logger.h"
 
 1476935894 e:\c++\sdl\sdl2-2.0.5\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -341,37 +342,9 @@
 	"begin_code.h"
 	"close_code.h"
 
-1480966265 e:\c++\codeblocks\tribe\sdlwrapper\image.h
-	<SDL.h>
-	<SDL_image.h>
-	"Logger.h"
-
-1480966235 source:e:\c++\codeblocks\tribe\sdlwrapper\image.cpp
-	<stdio.h>
-	"Image.h"
-
 1481199457 e:\c++\codeblocks\tribe\utils\logger.h
 	<iostream>
 	<fstream>
-
-1481199478 source:e:\c++\codeblocks\tribe\utils\logger.cpp
-	"Logger.h"
-
-1480525599 source:e:\c++\codeblocks\tribe\entity\location.cpp
-	"Location.h"
-
-1480525122 e:\c++\codeblocks\tribe\entity\location.h
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<sstream>
-	"Image.h"
-	"Logger.h"
-	"../GlobalValues.h"
-	"LocationScreen.h"
-
-1481399297 source:e:\c++\codeblocks\tribe\globalvalues.cpp
-	"GlobalValues.h"
 
 1481399256 e:\c++\codeblocks\tribe\globalvalues.h
 	<SDL.h>
@@ -387,36 +360,6 @@
 1480966513 source:e:\c++\codeblocks\tribe\entity\locationscreen.cpp
 	"LocationScreen.h"
 
-1480603816 source:e:\c++\codeblocks\tribe\utils\coordstranformer.cpp
-	"CoordsTranformer.h"
-
-1480600992 e:\c++\codeblocks\tribe\utils\coordstranformer.h
-	<SDL.h>
-	<math.h>
-	"Logger.h"
-	"../GlobalValues.h"
-
-1480668048 source:e:\c++\codeblocks\tribe\sdlwrapper\animationdata.cpp
-	"AnimationData.h"
-
-1480667430 e:\c++\codeblocks\tribe\sdlwrapper\animationdata.h
-	<SDL.h>
-	"Image.h"
-
-1480959173 source:e:\c++\codeblocks\tribe\sdlwrapper\animation.cpp
-	"Animation.h"
-
-1480959013 e:\c++\codeblocks\tribe\sdlwrapper\animation.h
-	<SDL.h>
-	"AnimationData.h"
-	"Timer.h"
-
-1480761598 source:e:\c++\codeblocks\tribe\sdlwrapper\timer.cpp
-	"Timer.h"
-
-1480761002 e:\c++\codeblocks\tribe\sdlwrapper\timer.h
-	<SDL.h>
-
 1480964178 source:e:\c++\codeblocks\tribe\entity\locationscreenmover.cpp
 	"LocationScreenMover.h"
 
@@ -424,28 +367,55 @@
 	"Timer.h"
 	"LocationScreen.h"
 
-1481186086 source:e:\c++\codeblocks\tribe\entity\locationdata.cpp
-	"LocationData.h"
+1480761002 e:\c++\codeblocks\tribe\sdlwrapper\timer.h
+	<SDL.h>
 
-1480525122 e:\c++\codeblocks\tribe\entity\locationdata.h
-	<stdio.h>
-	<stdlib.h>
+1481301890 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractattack.cpp
+	"AbstractAttack.h"
+
+1481366251 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractattack.h
+
+1481366531 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractcreature.cpp
+	"AbstractCreature.h"
+
+1481366380 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractcreature.h
+
+1481384055 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractdataholder.cpp
+	"AbstractDataHolder.h"
+
+1481383514 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractdataholder.h
+	<vector>
+	"FileReader.h"
+	"AbstractWeapon.h"
+	"AbstractEnemy.h"
+	"../../../GlobalValues.h"
+
+1481198842 e:\c++\codeblocks\tribe\utils\filereader.h
 	<string.h>
+	<fstream>
 	<sstream>
-	"Image.h"
+	<stdlib.h>
 	"Logger.h"
-	"../GlobalValues.h"
-	"LocationScreen.h"
+
+1481371201 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractweapon.h
+	"AbstractAttack.h"
+	"FileReader.h"
+
+1481384137 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractenemy.h
+	"AbstractAttack.h"
+	"AbstractCreature.h"
+	"FileReader.h"
+
+1481384160 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractenemy.cpp
+	"AbstractEnemy.h"
+
+1481371926 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractweapon.cpp
+	"AbstractWeapon.h"
 
 1481183380 source:e:\c++\codeblocks\tribe\entity\unit\ammunitionitem.cpp
 	"AmmunitionItem.h"
 
 1481183386 e:\c++\codeblocks\tribe\entity\unit\ammunitionitem.h
-
-1481217067 source:e:\c++\codeblocks\tribe\entity\unit\unit.cpp
-	"Unit.h"
-
-1481217534 e:\c++\codeblocks\tribe\entity\unit\unit.h
 
 1481292391 source:e:\c++\codeblocks\tribe\entity\unit\container.cpp
 	"Container.h"
@@ -459,24 +429,34 @@
 	"../../GlobalValues.h"
 	"Logger.h"
 
-1481198980 source:e:\c++\codeblocks\tribe\utils\filereader.cpp
+1481217534 e:\c++\codeblocks\tribe\entity\unit\unit.h
+
+1481399791 source:e:\c++\codeblocks\tribe\entity\unit\enemy.cpp
+	"Enemy.h"
+
+1481399147 e:\c++\codeblocks\tribe\entity\unit\enemy.h
+	"Unit.h"
+	"AbstractEnemy.h"
 	"FileReader.h"
 
-1481198842 e:\c++\codeblocks\tribe\utils\filereader.h
-	<string.h>
-	<fstream>
-	<sstream>
-	<stdlib.h>
-	"Logger.h"
+1481386474 source:e:\c++\codeblocks\tribe\entity\unit\mainhero.cpp
+	"MainHero.h"
 
-1481187941 source:e:\c++\codeblocks\tribe\utils\filereader1.cpp
-	"FileReader1.h"
+1481386358 e:\c++\codeblocks\tribe\entity\unit\mainhero.h
+	"AbstractCreature.h"
+	"Unit.h"
+	"../../GlobalValues.h"
 
-1481188041 e:\c++\codeblocks\tribe\utils\filereader1.h
-	<string.h>
-	<fstream>
-	<sstream>
-	<stdlib.h>
+1481219671 source:e:\c++\codeblocks\tribe\entity\unit\obstacle.cpp
+	"Obstacle.h"
+
+1481218185 e:\c++\codeblocks\tribe\entity\unit\obstacle.h
+	<SDL.h>
+	"Unit.h"
+	"FileReader.h"
+
+1481217067 source:e:\c++\codeblocks\tribe\entity\unit\unit.cpp
+	"Unit.h"
 
 1481399578 source:e:\c++\codeblocks\tribe\entity\unitsholder.cpp
 	"UnitsHolder.h"
@@ -489,62 +469,69 @@
 	"Enemy.h"
 	"Logger.h"
 
-1481219671 source:e:\c++\codeblocks\tribe\entity\unit\obstacle.cpp
-	"Obstacle.h"
+1481399297 source:e:\c++\codeblocks\tribe\globalvalues.cpp
+	"GlobalValues.h"
 
-1481218185 e:\c++\codeblocks\tribe\entity\unit\obstacle.h
+1481487078 source:e:\c++\codeblocks\tribe\main.cpp
 	<SDL.h>
-	"Unit.h"
+	<stdio.h>
+	"Image.h"
+	"LocationData.h"
+	"LocationScreen.h"
+	"GlobalValues.h"
+	"CoordsTranformer.h"
+	"AnimationData.h"
+	"Animation.h"
+	"LocationScreenMover.h"
+	"Container.h"
+	"UnitsHolder.h"
 	"FileReader.h"
-
-1481301890 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractattack.cpp
-	"AbstractAttack.h"
-
-1481366251 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractattack.h
-
-1481371926 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractweapon.cpp
 	"AbstractWeapon.h"
-
-1481371201 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractweapon.h
-	"AbstractAttack.h"
-	"FileReader.h"
-
-1481366531 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractcreature.cpp
-	"AbstractCreature.h"
-
-1481366380 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractcreature.h
-
-1481384160 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractenemy.cpp
-	"AbstractEnemy.h"
-
-1481384137 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractenemy.h
-	"AbstractAttack.h"
-	"AbstractCreature.h"
-	"FileReader.h"
-
-1481384055 source:e:\c++\codeblocks\tribe\entity\unit\abstract\abstractdataholder.cpp
 	"AbstractDataHolder.h"
+	"InterCellPixelsCalculator.h"
 
-1481383514 e:\c++\codeblocks\tribe\entity\unit\abstract\abstractdataholder.h
-	<vector>
+1480600992 e:\c++\codeblocks\tribe\utils\coordstranformer.h
+	<SDL.h>
+	<math.h>
+	"Logger.h"
+	"../GlobalValues.h"
+
+1480667430 e:\c++\codeblocks\tribe\sdlwrapper\animationdata.h
+	<SDL.h>
+	"Image.h"
+
+1480959013 e:\c++\codeblocks\tribe\sdlwrapper\animation.h
+	<SDL.h>
+	"AnimationData.h"
+	"Timer.h"
+
+1480959173 source:e:\c++\codeblocks\tribe\sdlwrapper\animation.cpp
+	"Animation.h"
+
+1480668048 source:e:\c++\codeblocks\tribe\sdlwrapper\animationdata.cpp
+	"AnimationData.h"
+
+1480966235 source:e:\c++\codeblocks\tribe\sdlwrapper\image.cpp
+	<stdio.h>
+	"Image.h"
+
+1480761598 source:e:\c++\codeblocks\tribe\sdlwrapper\timer.cpp
+	"Timer.h"
+
+1480603816 source:e:\c++\codeblocks\tribe\utils\coordstranformer.cpp
+	"CoordsTranformer.h"
+
+1481198980 source:e:\c++\codeblocks\tribe\utils\filereader.cpp
 	"FileReader.h"
-	"AbstractWeapon.h"
-	"AbstractEnemy.h"
-	"../../../GlobalValues.h"
 
-1481386474 source:e:\c++\codeblocks\tribe\entity\unit\mainhero.cpp
-	"MainHero.h"
+1481199478 source:e:\c++\codeblocks\tribe\utils\logger.cpp
+	"Logger.h"
 
-1481386358 e:\c++\codeblocks\tribe\entity\unit\mainhero.h
-	"AbstractCreature.h"
-	"Unit.h"
-	"../../GlobalValues.h"
+1481486723 e:\c++\codeblocks\tribe\utils\intercellpixelscalculator.h
+	<SDL.h>
+	"../GlobalValues.h"
+	"Logger.h"
 
-1481399147 e:\c++\codeblocks\tribe\entity\unit\enemy.h
-	"Unit.h"
-	"AbstractEnemy.h"
-	"FileReader.h"
-
-1481399791 source:e:\c++\codeblocks\tribe\entity\unit\enemy.cpp
-	"Enemy.h"
+1481486860 source:e:\c++\codeblocks\tribe\utils\intercellpixelscalculator.cpp
+	"InterCellPixelsCalculator.h"
 
