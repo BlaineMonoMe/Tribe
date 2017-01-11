@@ -1,8 +1,7 @@
 #include "LocationData.h"
 
-Location::Location(char* locationNumber)
+LocationData::LocationData(char* locationNumber)
 {
-    strcpy(this->locationNumber, locationNumber);
 
     char dataFilePath[80] = {0};
     strcat(dataFilePath, GlobalValues::LOCATIONS_DIR);
@@ -19,9 +18,11 @@ Location::Location(char* locationNumber)
     cellsInColCount = atoi(line.c_str());
 
     matrix = new int*[cellsInColCount];
+    actualMatrix = new int*[cellsInColCount];
 	for(int i = 0; i < cellsInColCount; i++)
 	{
 	    matrix[i] = new int[cellsInRowCount];
+	    actualMatrix[i] = new int[cellsInRowCount];
 	}
 
 
@@ -35,33 +36,81 @@ Location::Location(char* locationNumber)
         {
             std::getline(f, subline, ' ');
             matrix[j][i] = atoi(subline.c_str());
+            actualMatrix[j][i] = matrix[j][i];
         }
     }
 
 }
 
-Location::~Location()
+LocationData::~LocationData()
 {
     for(int i = 0; i < cellsInColCount; i++)
 	{
 		delete[] matrix[i];
 	}
 	delete[] matrix;
+
+	for(int i = 0; i < cellsInColCount; i++)
+	{
+		delete[] actualMatrix[i];
+	}
+	delete[] actualMatrix;
 }
 
-int Location::getWidth()
+int LocationData::getWidth()
 {
     return cellsInRowCount;
 }
 
-int Location::getHeight()
+int LocationData::getHeight()
 {
     return cellsInColCount;
 }
 
-int Location::getCell(int x, int y)
+int LocationData::getCell(int x, int y)
 {
     return matrix[y][x];
+}
+
+bool LocationData::isFreeToGo(int x, int y)
+{
+    if(x < 0 || y < 0) return false;
+    if(x >= cellsInRowCount - 1 || y > cellsInColCount - 1) return false;
+    if(actualMatrix[y][x] == 1) return false;
+    if(actualMatrix[y][x] == 2) return false;
+    return true;
+}
+
+void LocationData::reinitActualData()
+{
+    for(int j = 0; j < cellsInColCount; j++)
+    {
+        for(int i = 0; i < cellsInRowCount; i++)
+        {
+            actualMatrix[j][i] = matrix[j][i];
+        }
+    }
+}
+
+void LocationData::setEnemyOnCell(int x, int y)
+{
+    actualMatrix[y][x] = 2;
+}
+
+bool LocationData::isWater(int x, int y)
+{
+    if(x < 0 || y < 0) return false;
+    if(x >= cellsInRowCount - 1 || y > cellsInColCount - 1) return false;
+    if(matrix[y][x] == 3) return true;
+    return false;
+}
+
+bool LocationData::isOtherLocation(int x, int y)
+{
+    if(x < 0 || y < 0) return false;
+    if(x >= cellsInRowCount - 1 || y > cellsInColCount - 1) return false;
+    if(matrix[y][x] >= 100) return true;
+    return false;
 }
 
 

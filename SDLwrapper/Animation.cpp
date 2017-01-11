@@ -9,7 +9,6 @@ Animation::Animation(AnimationData *animationData, int interval): Timer(interval
 
 Animation::~Animation()
 {
-    delete animationData;
     delete screenRect;
 }
 
@@ -25,6 +24,8 @@ void Animation::setScreenCoords(int screenX, int screenY)
 {
     this->screenRect->x = screenX;
     this->screenRect->y = screenY;
+    this->screenRect->w = animationData->getFrameWidth();
+    this->screenRect->h = animationData->getFrameHeight();
 }
 
 void Animation::reset()

@@ -1,9 +1,9 @@
 #include "MainHero.h"
 
-MainHero::MainHero()
+MainHero::MainHero(char *creatureNumber, SDL_Renderer *renderer) : Creature(creatureNumber, renderer)
 {
-    xCell = 3;
-    yCell = 25;
+    xCell = 4;
+    yCell = 50;
 
     maxLife = 150;
     currLife = maxLife;
@@ -22,11 +22,16 @@ MainHero::MainHero()
     throwPoints = 2;
     changeWeaponPoints = 7;
     usePoints = 7;
+
+    state = STAY;
+    direction = RIGHT;
 }
 
 MainHero::~MainHero() {}
 
-void MainHero::draw()
-{
+int MainHero::getImagePixellOffsetX() {return imagePixellOffsetX;}
+int MainHero::getImagePixellOffsetY() {return imagePixellOffsetY;}
+int MainHero::getNonBattleSpeed() {return nonBattleSpeed;}
 
-}
+
+

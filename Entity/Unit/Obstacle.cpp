@@ -13,24 +13,30 @@ void Obstacle::load(FileReader *fileReader)
     xCell = fileReader->readInt();
     yCell = fileReader->readInt();
 
-    rectToDrawTo = new SDL_Rect();
-    rectToDrawTo->x = fileReader->readInt();
-    rectToDrawTo->y = fileReader->readInt();
-    rectToDrawTo->w = fileReader->readInt();
-    rectToDrawTo->h = fileReader->readInt();
+    rectToDrawFrom = new SDL_Rect();
+    rectToDrawFrom->x = fileReader->readInt();
+    rectToDrawFrom->y = fileReader->readInt();
+    rectToDrawFrom->w = fileReader->readInt();
+    rectToDrawFrom->h = fileReader->readInt();
 }
 
 Obstacle::~Obstacle()
 {
-    delete rectToDrawTo;
+    delete rectToDrawFrom;
 }
 
-void Obstacle::draw()
+void Obstacle::setObstaclesImage(Image *obstaclesImage) {this->obstaclesImage = obstaclesImage;}
+
+void Obstacle::draw(int xPixellScreenOffset, int yPixellScreenOffset)
 {
+    SDL_Rect *rectDrawTo = new SDL_Rect();
+    rectDrawTo->x = rectToDrawFrom->x - xPixellScreenOffset;
+    rectDrawTo->y = rectToDrawFrom->y - yPixellScreenOffset;
+    rectDrawTo->w = rectToDrawFrom->w;
+    rectDrawTo->h = rectToDrawFrom->h;
 
+    obstaclesImage->draw(rectToDrawFrom, rectDrawTo);
+
+    delete rectDrawTo;
 }
 
-SDL_Rect* Obstacle::getRectToDrawTo()
-{
-    return rectToDrawTo;
-}

@@ -9,20 +9,21 @@
 #include "FileReader.h"
 #include "../../GlobalValues.h";
 #include "Logger.h"
+#include "Image.h"
+#include "CoordsTranformer.h"
 
 
 class Container : public Unit
 {
     public:
         Container();
-        Container(FileReader *fileReader);
+        Container(FileReader *fileReader, SDL_Renderer *renderer);
         ~Container();
 
-        void draw();
+        void draw(int xPixellScreenOffset, int yPixelScreenOffset);
 
-        void load(FileReader *fileReader);
+        void load(FileReader *fileReader, SDL_Renderer *renderer);
 
-        std::string getPathToSmallImage();
         int getLitersOfWater();
         bool getWillStayAnyway();
 
@@ -40,12 +41,13 @@ class Container : public Unit
 
     private:
         bool willStayAnyway = false;
-        std::string pathToSmallImage;
         int litersOfWater;
         std::vector<int> *weapons = NULL;
         std::vector<int> *stones = NULL;
         std::vector<AmmunitionItem*> *ammunitions = NULL;
         std::vector<int> *foods = NULL;
+
+        Image *smallImage = NULL;
 
 };
 

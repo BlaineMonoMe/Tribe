@@ -2,9 +2,9 @@
 
 Container::Container() {}
 
-Container::Container(FileReader *fileReader)
+Container::Container(FileReader *fileReader, SDL_Renderer *renderer)
 {
-    load(fileReader);
+    load(fileReader, renderer);
 }
 
 Container::~Container()
@@ -22,18 +22,26 @@ Container::~Container()
     if(foods != NULL) delete foods;
 }
 
-void Container::draw()
+void Container::draw(int xPixellScreenOffset, int yPixellScreenOffset)
 {
+    SDL_Point point = CoordsTranformer::cellsToPixels(xCell, yCell);
 
+    int pixellXOffset = point.x - smallImage->getWidth() / 2;
+    int pixellYOffset = point.y - smallImage->getHeight() / 2;
+
+    int resultXCoord = pixellXOffset - xPixellScreenOffset;
+    int resultYCoord = pixellYOffset - yPixellScreenOffset;
+
+    smallImage->draw(resultXCoord, resultYCoord);
 }
 
-void Container::load(FileReader *fileReader)
+void Container::load(FileReader *fileReader, SDL_Renderer *renderer)
 {
     fileReader->readLine(); // read service data - it is not used
     willStayAnyway = fileReader->readInt();
     xCell = fileReader->readInt();
     yCell = fileReader->readInt();
-    pathToSmallImage = fileReader->readLine();
+    smallImage = new Image((char*)(fileReader->readLine().c_str()), renderer);
     litersOfWater = fileReader->readInt();
 
     int weaponsCount = fileReader->readInt();
@@ -66,7 +74,6 @@ void Container::load(FileReader *fileReader)
 }
 
 int Container::getLitersOfWater() {return litersOfWater;}
-std::string Container::getPathToSmallImage() {return pathToSmallImage;}
 bool Container::getWillStayAnyway() {return willStayAnyway;}
 
 int Container::getWeaponType(int index) {return weapons->at(index);}

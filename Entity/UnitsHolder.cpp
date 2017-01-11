@@ -2,17 +2,17 @@
 
 UnitsHolder::UnitsHolder() {}
 
-UnitsHolder::UnitsHolder(char *locationNumber)
+UnitsHolder::UnitsHolder(char *locationNumber, AbstractDataHolder *dataHolder, LocationData *locationData, Image *obstaclesImage, SDL_Renderer *renderer)
 {
-    load(locationNumber);
+    load(locationNumber, dataHolder, locationData, obstaclesImage, renderer);
 }
 
-void UnitsHolder::load(char *locationNumber)
+void UnitsHolder::load(char *locationNumber, AbstractDataHolder *dataHolder, LocationData *locationData, Image *obstaclesImage, SDL_Renderer *renderer)
 {
     units = new std::vector<Unit*>();
-    loadContainers(locationNumber);
-    loadObstacles(locationNumber);
-    loadEnemies(locationNumber);
+    loadContainers(locationNumber, renderer);
+    loadObstacles(locationNumber, obstaclesImage);
+    loadEnemies(locationNumber, dataHolder, locationData, renderer);
 }
 
 UnitsHolder::~UnitsHolder()
@@ -48,7 +48,30 @@ UnitsHolder::~UnitsHolder()
     delete units;
 }
 
-void UnitsHolder::loadContainers(char *locationNumber)
+void UnitsHolder::nonBattleEnemiesAct()
+{
+    for(int i = 0; i < enemies->size(); i++)
+    {
+        enemies->at(i)->nonBattleActIfNeeded();
+    }
+}
+
+void UnitsHolder::addMainHero(Unit *mainHero)
+{
+    units->push_back(mainHero);
+}
+
+void UnitsHolder::addCursor(Unit *cursor)
+{
+    this->cursor = cursor;
+}
+
+void UnitsHolder::sortUnits()
+{
+    std::sort(units->begin(), units->end(), unitComp);
+}
+
+void UnitsHolder::loadContainers(char *locationNumber, SDL_Renderer *renderer)
 {
 
     char dataFilePath[80] = {0};
@@ -63,15 +86,14 @@ void UnitsHolder::loadContainers(char *locationNumber)
 
     for(int i = 0; i < containersCount; i++)
     {
-        Container *container = new Container(fileReader);
+        Container *container = new Container(fileReader, renderer);
         containers->push_back(container);
-        units->push_back(container);
     }
 
     delete fileReader;
 }
 
-void UnitsHolder::loadObstacles(char *locationNumber)
+void UnitsHolder::loadObstacles(char *locationNumber, Image *obstacleImage)
 {
 
     char dataFilePath[80] = {0};
@@ -87,6 +109,7 @@ void UnitsHolder::loadObstacles(char *locationNumber)
     for(int i = 0; i < obstaclesCount; i++)
     {
         Obstacle *obstacle = new Obstacle(fileReader);
+        obstacle->setObstaclesImage(obstacleImage);
         obstacles->push_back(obstacle);
         units->push_back(obstacle);
     }
@@ -94,7 +117,7 @@ void UnitsHolder::loadObstacles(char *locationNumber)
     delete fileReader;
 }
 
-void UnitsHolder::loadEnemies(char *locationNumber)
+void UnitsHolder::loadEnemies(char *locationNumber, AbstractDataHolder *dataHolder, LocationData *locationData, SDL_Renderer *renderer)
 {
 
     char dataFilePath[80] = {0};
@@ -109,7 +132,7 @@ void UnitsHolder::loadEnemies(char *locationNumber)
 
     for(int i = 0; i < enemiesCount; i++)
     {
-        Enemy *enemy = new Enemy(fileReader);
+        Enemy *enemy = new Enemy(fileReader, dataHolder, locationData, renderer);
         enemies->push_back(enemy);
         units->push_back(enemy);
     }
@@ -117,11 +140,52 @@ void UnitsHolder::loadEnemies(char *locationNumber)
     delete fileReader;
 }
 
+void UnitsHolder::draw(LocationScreen *locationScreen)
+{
 
+    cursor->draw(0, 0);
 
+    for(int i = 0; i < containers->size(); i++)
+    {
+        containers->at(i)->draw(locationScreen->getXOffset(), locationScreen->getYOffset());
+    }
 
-Container* UnitsHolder::getContainer(int index) { return containers->at(index); }
+    sortUnits();
+    for(int i = 0; i < units->size(); i++)
+    {
+        units->at(i)->draw(locationScreen->getXOffset(), locationScreen->getYOffset());
+    }
 
-Obstacle* UnitsHolder::getObstacle(int index) { return obstacles->at(index); }
+}
+
+bool UnitsHolder::isEnemyOnCell(int xCell, int yCell)
+{
+    for(int i = 0; i < enemies->size(); i++)
+    {
+        if(enemies->at(i)->getXCell() == xCell && enemies->at(i)->getYCell() == yCell)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool UnitsHolder::isContainerOnCell(int xCell, int yCell)
+{
+    for(int i = 0; i < containers->size(); i++)
+    {
+        if(containers->at(i)->getXCell() == xCell && containers->at(i)->getYCell() == yCell)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+std::vector<Enemy*>* UnitsHolder::getEnemies() {return enemies;}
+
+Container* UnitsHolder::getContainer(int index) {return containers->at(index);}
+
+Obstacle* UnitsHolder::getObstacle(int index) {return obstacles->at(index);}
 
 

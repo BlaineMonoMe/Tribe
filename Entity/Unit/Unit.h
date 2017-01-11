@@ -14,12 +14,15 @@ class Unit
         int getYCell();
         void setYCell(int val);
 
-        virtual void draw() = 0;
+        virtual void draw(int xPixellScreenOffset, int yPixelScreenOffset) = 0;
 
 
     protected:
         int xCell;
         int yCell;
 };
+
+bool unitComp(Unit *unit1, Unit *unit2);
+
 
 #endif // UNIT_H

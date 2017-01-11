@@ -8,9 +8,13 @@ char *GlobalValues::ITEMS_DIR_FILE = "\\items\\containers.txt";
 char *GlobalValues::OBSTACLES_DIR_FILE = "\\obstacles\\obstacles.txt";
 char *GlobalValues::ENEMIES_DIR_FILE = "\\enemies\\enemies.txt";
 char *GlobalValues::LOCATION_IMG_FILENAME = "\\img.jpg";
+char *GlobalValues::LOCATION_IMG_OBSTACLE_FILENAME = "\\obstaclesImg.png";
 char *GlobalValues::LOCATION_TXT_FILENAME = "\\data.txt";
 char *GlobalValues::ABSTRACT_WEAPON_DIR_FILE = "resources\\abstractData\\weapons.txt";
 char *GlobalValues::ABSTRACT_ENEMY_DIR_FILE = "resources\\abstractData\\enemies.txt";
+char *GlobalValues::IMAGES_CREATURES_DIR = "resources\\images\\creatures\\";
+char *GlobalValues::INFO_FILE_TXT = "\\info.txt";
+
 
 float GlobalValues::CELL_HEIGHT = 25.0;
 float GlobalValues::CELL_WIDTH = 42.0; // OR 43.3???

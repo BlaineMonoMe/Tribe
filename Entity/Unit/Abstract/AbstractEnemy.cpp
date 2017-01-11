@@ -28,7 +28,8 @@ void AbstractEnemy::load(FileReader *fileReader)
     movePoints = fileReader->readInt();
     attackPoints = fileReader->readInt();
     freeWill = fileReader->readInt();
-
+    imagePixellOffsetX = fileReader->readInt();
+    imagePixellOffsetY = fileReader->readInt();
 }
 
 AbstractEnemy::~AbstractEnemy() {}

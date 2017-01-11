@@ -1,5 +1,7 @@
 #include <SDL.h>
 #include <stdio.h>
+#include <ctime>
+
 #include "Image.h"
 #include "LocationData.h"
 #include "LocationScreen.h"
@@ -14,14 +16,28 @@
 #include "AbstractWeapon.h"
 #include "AbstractDataHolder.h"
 #include "InterCellPixelsCalculator.h"
+#include "Path.h"
+#include "Cell.h"
+#include "PathGenerator.h"
+#include "MainHero.h"
+#include "DirectionsSequence.h"
+#include "AbstractCreature.h"
+#include "TimerHolder.h"
+#include "Location.h"
+#include "Randomizer.h"
+#include "Cursor.h"
+
 
 SDL_Window *window = NULL;
 SDL_Surface *screen = NULL;
 
+
 int main(int argc, char** args)
 {
-
     //Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", "zzz");
+
+
+    srand(time(0));
 
     bool quit = false;
 
@@ -34,55 +50,76 @@ int main(int argc, char** args)
     int imgFlags = IMG_INIT_JPG | IMG_INIT_PNG;
     IMG_Init(imgFlags);
 
-    SDL_Renderer* renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED );
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
 
-
-    /*SDL_Surface* loadedSurface = IMG_Load("point.png");
-    SDL_Texture* gTexture = SDL_CreateTextureFromSurface( renderer, loadedSurface );
-    SDL_RenderClear( renderer );
-    SDL_RenderCopy( renderer, gTexture, NULL, NULL );
-    SDL_RenderPresent( renderer );*/
+    SDL_ShowCursor(SDL_DISABLE);
 
 
-    AbstractDataHolder *adh = new AbstractDataHolder();
+
+    //==========================
+
+
+    Cursor *cursor = new Cursor(renderer);
+
+    AbstractDataHolder *abstractData = new AbstractDataHolder();
+
+    MainHero *mh = new MainHero("0", renderer);
+
+    Location *location = new Location("0", abstractData, renderer);
+    location->addMainHero(mh);
+    location->addCursor(cursor);
+    location->doEnable();
+
+    cursor->setLocation(location);
+
+
+    DirectionsSequence *dd = new DirectionsSequence();
+    //PathGenerator::generatePathAStar(new Cell(31, 25), new Cell(33, 27), location->getLocationData(), dd);
+
+
+    //mh->draw(location->getLocationScreen()->getXOffset(), location->getLocationScreen()->getYOffset());
+    //mh->setDetstinationAndGo(4, 26, location->getLocationData());
+
+
+
+
+
+
+
+    //mh->image = new Image("workImages\\redPoint.jpg", renderer);
+
+
+
+
+   /* AbstractDataHolder *adh = new AbstractDataHolder();
 
     AbstractEnemy *ae = adh->getAbstractEnemyByType(1);
     AbstractWeapon *aw = adh->getAbstractWeaponByType(1);
 
-    int z = aw->getPower();
+    int z = aw->getPower();*/
 
     //Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", z);
 
-    delete adh;
+   /* delete adh;
 
     UnitsHolder *uh = new UnitsHolder("0");
 
-    delete uh;
+    delete uh;*/
 
 
-    SDL_Point p = InterCellPixelsCalculator::getInterCellPixel(RIGHT_DOWN, 98, 100);
-    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", p.x);
-    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", p.y);
 
-
+    //Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", cc->getY());
 
 
 
 
 
 
-    LocationScreen *ls = new LocationScreen("0", renderer);
-    ls->draw();
-
-    LocationScreenMover *lsm = new LocationScreenMover(ls, 30);
+   // AnimationData *ad = new AnimationData("workImages/Animation4Frames.png", 4, renderer);
 
 
-
-    AnimationData *ad = new AnimationData("workImages/Animation4Frames.png", 4, renderer);
-
-
-    class AnimationMover : public Timer
+    /*class AnimationMover : public Timer
     {
     public:
         Animation *a;
@@ -110,51 +147,57 @@ int main(int argc, char** args)
             rect->x += 2;
             a->setScreenRect(rect);
         }
-    };
+    };*/
 
-    Animation *a = new Animation(ad, 300);
+    /*Animation *a = new Animation(ad, 300);
     SDL_Rect *r = new SDL_Rect();
             r->x = 120;
             r->y = 27;
             r->w = 120;
             r->h = 120;
-            a->setScreenRect(r);
+            a->setScreenRect(r);*/
     //a->start();
 
-    AnimationMover *am = new AnimationMover(50, a, r);
+    //AnimationMover *am = new AnimationMover(50, a, r);
     //am->start();
 
-    SDL_RenderPresent(renderer);
+
+
+    /*bool isSetBeginCell = false;
+    Cell *begCell = NULL;
+    Cell *mainHeroDestCell = NULL;*/
+
+    int last = 0;
 
     while(quit == false)
     {
 
-        //SDL_Delay(1);
         int currTime = SDL_GetTicks();
 
-        if(a->isTime(currTime) && a->getIsStarted())
+        TimerHolder::getInstance().updateTimers(currTime);
+
+
+
+
+        //if(currTime > last + 100)
         {
-            ls->draw();
-            a->execute();
-            SDL_RenderPresent(renderer);
+
+        last = currTime;
+
+        location->draw();
+        cursor->updateType();
+        //cursor->draw(0, 0); /// zeros - because cursor already contains this data
+        location->getUnitsHolder()->nonBattleEnemiesAct();
+        location->updateLocationData();
+
+
+
+        SDL_RenderPresent(renderer);
+
         }
 
 
-        if(am->isTime(currTime) && am->getIsStarted())
-        {
-            am->execute();
-            ls->draw();
-            a->draw();
-            SDL_RenderPresent(renderer);
-        }
 
-
-        if(lsm->getIsStarted() && lsm->isTime(currTime))
-        {
-            lsm->execute();
-            ls->draw();
-            SDL_RenderPresent(renderer);
-        }
 
 
 
@@ -173,28 +216,32 @@ int main(int argc, char** args)
                 int x, y;
                 SDL_GetMouseState(&x, &y);
 
-                lsm->checkNeedToMove(x, y);
+                cursor->setXPixelCoord(x);
+                cursor->setYPixelCoord(y);
+                cursor->updateCoords();
+
+                location->getLocationScreenMover()->checkNeedToMove(x, y);
             }
             if(event.type == SDL_MOUSEBUTTONDOWN)
             {
                 int x, y;
                 SDL_GetMouseState(&x, &y);
 
-                SDL_Point p = CoordsTranformer::pixelsToCells(x, y);
-                SDL_Point p2 = CoordsTranformer::cellsToPixels(p.x, p.y);
-                Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", p2.x);
-                Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", p2.y);
+                int screenOffsetX = location->getLocationScreen()->getXOffset();
+                int screenOffsetY = location->getLocationScreen()->getYOffset();
 
-                //a->start();
-                //am->start();
+                SDL_Point p = CoordsTranformer::pixelsToCells(x + screenOffsetX,
+                                                              y + screenOffsetY);
+
+                mh->setDetstinationAndGo(p.x, p.y, location->getLocationData());
             }
         }
     }
 
 
-    delete ad;
-    delete ls;
-    delete lsm;
+    delete location;
+    delete abstractData;
+    delete mh;
 
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);

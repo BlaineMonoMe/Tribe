@@ -1,5 +1,5 @@
-#ifndef LOCATION_H
-#define LOCATION_H
+#ifndef LOCATIONDATA_H
+#define LOCATIONDATA_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,22 +15,31 @@
 /**
     Represents location (location data)
 */
-class Location
+class LocationData
 {
     public:
-        Location(char* loctionNumber);
-        ~Location();
+        LocationData(char* locationNumber);
+        ~LocationData();
 
         int getWidth();
         int getHeight();
         int getCell(int x, int y);
 
-    private:
-        char locationNumber[5] = {0};
+        bool isWater(int x, int y);
+        bool isOtherLocation(int x, int y);
 
+        /// working with actual data (including enemies on location)
+        bool isFreeToGo(int x, int y);
+        void reinitActualData();
+        void setEnemyOnCell(int x, int y);
+
+    private:
         int cellsInRowCount;
         int cellsInColCount;
         int **matrix;
+
+        /// same matrix with data + with enemies on location
+        int **actualMatrix;
 
 };
 

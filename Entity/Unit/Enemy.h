@@ -5,23 +5,59 @@
 #include "AbstractEnemy.h"
 #include "FileReader.h"
 
-enum Mode {ATTACK, FOLLOW, REST};
+#include "Unit.h"
+#include "Creature.h"
+#include "AnimationData.h"
+#include "AbstractDataHolder.h"
+#include "Cell.h"
+#include "Randomizer.h"
+#include "TimerHolder.h"
 
-class Enemy : public Unit
+enum MainHeroDetectionState {AGGRESS, FOLLOW, REST};
+
+class Enemy;
+
+/**
+    In NonBattle Mode this timer will delay enemy's staying mode
+*/
+class EnemyStayTimer : public Timer
 {
     public:
-        Enemy();
-        Enemy(FileReader *fileReader);
+        EnemyStayTimer(int interval, Enemy *enemy);
+        void execute();
+
+    private:
+        Enemy *enemy;
+        int COEF = 3;
+};
+
+
+class Enemy : public Creature
+{
+    public:
+        Enemy(FileReader *fileReader, AbstractDataHolder *dataHolder , LocationData *locationData, SDL_Renderer *renderer);
         ~Enemy();
 
-        void load(FileReader *fileReader);
+        void load(FileReader *fileReader, AbstractDataHolder *dataHolder, LocationData *locationData, SDL_Renderer *renderer);
 
-        void draw();
+        void nonBattleActIfNeeded();
+
+        Cell* getRandCellToGo();
+
+        int getImagePixellOffsetX();
+        int getImagePixellOffsetY();
+        int getNonBattleSpeed();
+        AbstractEnemy* getAbstractEnemy();
+        LocationData* getLocationData();
 
     private:
         AbstractEnemy *abstractEnemy;
 
-        Mode mode;
+        MainHeroDetectionState mainHeroDetectionState;
+
+        LocationData *locationData;
+
+        EnemyStayTimer *stayTimer;
 
         int currLife;
         int currPoints;
@@ -32,6 +68,9 @@ class Enemy : public Unit
         int yDestination;
         int secondsToWait;
 
+
+
 };
+
 
 #endif // ENEMY_H

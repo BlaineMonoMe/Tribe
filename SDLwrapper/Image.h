@@ -13,7 +13,10 @@ class Image
         Image(char *filename, SDL_Renderer *renderer);
         ~Image();
         void load(char *filename, SDL_Renderer *renderer);
+
         void draw(SDL_Rect *imageRect, SDL_Rect *screenRect);
+        void draw(SDL_Rect *screenRect);
+        void draw(int x, int y);
 
         int getWidth();
         int getHeight();

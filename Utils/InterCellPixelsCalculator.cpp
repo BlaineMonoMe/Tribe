@@ -6,11 +6,16 @@ SDL_Point InterCellPixelsCalculator::getInterCellPixel(Direction direction, int 
     const int diagonalDistanceX = 21;
     const int diagonalDistanceY = 19;
 
-    float coef = currTime / float(maxTime);
+
+    float coef = 1.0;
+    if(currTime != maxTime)
+    {
+        coef = currTime / float(maxTime);
+    }
 
     SDL_Point result;
-    result.x = 110;
-    result.y = 110;
+    result.x = 0;
+    result.y = 0;
 
     switch (direction)
     {

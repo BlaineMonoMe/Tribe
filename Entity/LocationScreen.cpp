@@ -3,10 +3,17 @@
 LocationScreen::LocationScreen(char* locationNumber, SDL_Renderer *renderer)
 {
     char imageFilePath[80] = {0};
+    char imageObstacleFilePath[80] = {0};
 
     strcat(imageFilePath, GlobalValues::LOCATIONS_DIR);
     strcat(imageFilePath, locationNumber);
+
+    strcpy(imageObstacleFilePath, imageFilePath);
+
     strcat(imageFilePath, GlobalValues::LOCATION_IMG_FILENAME);
+    strcat(imageObstacleFilePath, GlobalValues::LOCATION_IMG_OBSTACLE_FILENAME);
+
+    Logger::log("E:\\C++\\CodeBlocks\\Tribe\\logs\\1.txt", imageObstacleFilePath);
 
     screenRect = new SDL_Rect();
     screenRect->x = 0;
@@ -21,6 +28,7 @@ LocationScreen::LocationScreen(char* locationNumber, SDL_Renderer *renderer)
     locationRect->h = GlobalValues::SCREEN_HEIGHT;
 
     image = new Image(imageFilePath, renderer);
+    obstaclesImage = new Image(imageObstacleFilePath, renderer);
 }
 
 LocationScreen::~LocationScreen()
@@ -29,6 +37,10 @@ LocationScreen::~LocationScreen()
     delete screenRect;
     delete locationRect;
 }
+
+int LocationScreen::getXOffset() {return xOffset;}
+int LocationScreen::getYOffset() {return yOffset;}
+Image* LocationScreen::getObstaclesImage() {return obstaclesImage;}
 
 void LocationScreen::draw()
 {

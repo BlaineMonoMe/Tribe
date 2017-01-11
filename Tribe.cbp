@@ -18,6 +18,8 @@
 					<Add directory="Entity" />
 					<Add directory="Entity/Unit" />
 					<Add directory="Entity/Unit/Abstract" />
+					<Add directory="Mechanics/Path" />
+					<Add directory="Holder" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -32,6 +34,8 @@
 					<Add directory="Entity" />
 					<Add directory="Entity/Unit" />
 					<Add directory="Entity/Unit/Abstract" />
+					<Add directory="Mechanics/Path" />
+					<Add directory="Holder" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -49,6 +53,10 @@
 			<Add directory="E:/C++/SDL/SDL2-2.0.5/i686-w64-mingw32/lib" />
 			<Add directory="E:/C++/SDL/SDL2_image-2.0.1/i686-w64-mingw32/lib" />
 		</Linker>
+		<Unit filename="Entity/L.cpp" />
+		<Unit filename="Entity/L.h" />
+		<Unit filename="Entity/Location.cpp" />
+		<Unit filename="Entity/Location.h" />
 		<Unit filename="Entity/LocationData.cpp" />
 		<Unit filename="Entity/LocationData.h" />
 		<Unit filename="Entity/LocationScreen.cpp" />
@@ -59,6 +67,8 @@
 		<Unit filename="Entity/Unit/Abstract/AbstractAttack.h" />
 		<Unit filename="Entity/Unit/Abstract/AbstractCreature.cpp" />
 		<Unit filename="Entity/Unit/Abstract/AbstractCreature.h" />
+		<Unit filename="Entity/Unit/Abstract/AbstractCreatureGraphics.cpp" />
+		<Unit filename="Entity/Unit/Abstract/AbstractCreatureGraphics.h" />
 		<Unit filename="Entity/Unit/Abstract/AbstractDataHolder.cpp" />
 		<Unit filename="Entity/Unit/Abstract/AbstractDataHolder.h" />
 		<Unit filename="Entity/Unit/Abstract/AbstractEnemy.cpp" />
@@ -69,6 +79,12 @@
 		<Unit filename="Entity/Unit/AmmunitionItem.h" />
 		<Unit filename="Entity/Unit/Container.cpp" />
 		<Unit filename="Entity/Unit/Container.h" />
+		<Unit filename="Entity/Unit/Creature.cpp" />
+		<Unit filename="Entity/Unit/Creature.h" />
+		<Unit filename="Entity/Unit/CreatureDrawer.cpp" />
+		<Unit filename="Entity/Unit/CreatureDrawer.h" />
+		<Unit filename="Entity/Unit/CreatureMover.cpp" />
+		<Unit filename="Entity/Unit/CreatureMover.h" />
 		<Unit filename="Entity/Unit/Enemy.cpp" />
 		<Unit filename="Entity/Unit/Enemy.h" />
 		<Unit filename="Entity/Unit/MainHero.cpp" />
@@ -81,10 +97,22 @@
 		<Unit filename="Entity/UnitsHolder.h" />
 		<Unit filename="GlobalValues.cpp" />
 		<Unit filename="GlobalValues.h" />
+		<Unit filename="Holder/TimerHolder.cpp" />
+		<Unit filename="Holder/TimerHolder.h" />
+		<Unit filename="Mechanics/Path/Cell.cpp" />
+		<Unit filename="Mechanics/Path/Cell.h" />
+		<Unit filename="Mechanics/Path/DirectionsSequence.cpp" />
+		<Unit filename="Mechanics/Path/DirectionsSequence.h" />
+		<Unit filename="Mechanics/Path/Path.cpp" />
+		<Unit filename="Mechanics/Path/Path.h" />
+		<Unit filename="Mechanics/Path/PathGenerator.cpp" />
+		<Unit filename="Mechanics/Path/PathGenerator.h" />
 		<Unit filename="SDLwrapper/Animation.cpp" />
 		<Unit filename="SDLwrapper/Animation.h" />
 		<Unit filename="SDLwrapper/AnimationData.cpp" />
 		<Unit filename="SDLwrapper/AnimationData.h" />
+		<Unit filename="SDLwrapper/Cursor.cpp" />
+		<Unit filename="SDLwrapper/Cursor.h" />
 		<Unit filename="SDLwrapper/Image.cpp" />
 		<Unit filename="SDLwrapper/Image.h" />
 		<Unit filename="SDLwrapper/Timer.cpp" />
@@ -93,8 +121,12 @@
 		<Unit filename="Utils/CoordsTranformer.h" />
 		<Unit filename="Utils/FileReader.cpp" />
 		<Unit filename="Utils/FileReader.h" />
+		<Unit filename="Utils/InterCellPixelsCalculator.cpp" />
+		<Unit filename="Utils/InterCellPixelsCalculator.h" />
 		<Unit filename="Utils/Logger.cpp" />
 		<Unit filename="Utils/Logger.h" />
+		<Unit filename="Utils/Randomizer.cpp" />
+		<Unit filename="Utils/Randomizer.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

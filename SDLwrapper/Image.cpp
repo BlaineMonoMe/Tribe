@@ -36,6 +36,32 @@ void Image::draw(SDL_Rect *imageRect, SDL_Rect *screenRect)
     }
 }
 
+void Image::draw(SDL_Rect *screenRect)
+{
+    SDL_Rect *imageRect = new SDL_Rect;
+    imageRect->x = 0;
+    imageRect->y = 0;
+    imageRect->w = width;
+    imageRect->h = height;
+
+    draw(imageRect, screenRect);
+
+    delete imageRect;
+}
+
+void Image::draw(int x, int y)
+{
+    SDL_Rect *screeRect = new SDL_Rect;
+    screeRect->x = x;
+    screeRect->y = y;
+    screeRect->w = width;
+    screeRect->h = height;
+
+    draw(screeRect);
+
+    delete screeRect;
+}
+
 int Image::getWidth()
 {
     if(surface != NULL)

@@ -23,6 +23,11 @@ class LocationScreen
         void draw();
         void move(Direction direction, int delta);
 
+        int getXOffset();
+        int getYOffset();
+
+        Image* getObstaclesImage();
+
     private:
         int xOffset = 0;
         int yOffset = 0;
@@ -31,6 +36,7 @@ class LocationScreen
         SDL_Rect *locationRect;
 
         Image *image = NULL;
+        Image *obstaclesImage = NULL;
 
 };
 

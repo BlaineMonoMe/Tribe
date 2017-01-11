@@ -16,6 +16,9 @@ class AnimationData
         SDL_Rect* getFrameRect(int frameNumber);
         Image* getSpritesheet();
 
+        int getFrameWidth();
+        int getFrameHeight();
+
     private:
         Image *spritesheet;
         int framesCount;

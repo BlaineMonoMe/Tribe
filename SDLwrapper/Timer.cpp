@@ -20,6 +20,7 @@ int Timer::getInterval()
 void Timer::start()
 {
     startedTime = SDL_GetTicks();
+    execute();
     isStarted = true;
 }
 

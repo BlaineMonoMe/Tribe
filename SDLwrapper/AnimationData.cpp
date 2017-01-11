@@ -29,6 +29,16 @@ Image* AnimationData::getSpritesheet()
     return spritesheet;
 }
 
+int AnimationData::getFrameWidth()
+{
+    return spritesheet->getWidth() / framesCount;
+}
+
+int AnimationData::getFrameHeight()
+{
+    return spritesheet->getHeight();
+}
+
 SDL_Rect* AnimationData::getFrameRect(int frameNumber)
 {
     SDL_Rect *result = new SDL_Rect();

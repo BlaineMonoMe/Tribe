@@ -5,6 +5,7 @@
 
 #include "Unit.h"
 #include "FileReader.h"
+#include "Image.h"
 
 
 class Obstacle : public Unit
@@ -15,12 +16,13 @@ class Obstacle : public Unit
         ~Obstacle();
         void load(FileReader *fileReader);
 
-        void draw();
+        void setObstaclesImage(Image *obstaclesImage);
 
-        SDL_Rect* getRectToDrawTo();
+        void draw(int xPixellScreenOffset, int yPixelScreenOffset);
 
     private:
-        SDL_Rect *rectToDrawTo = NULL;
+        SDL_Rect *rectToDrawFrom = NULL;
+        Image *obstaclesImage = NULL;
 
 
 };

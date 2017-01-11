@@ -1,18 +1,22 @@
 #ifndef MAINHERO_H
 #define MAINHERO_H
 
+#include "Creature.h"
 #include "AbstractCreature.h"
-#include "Unit.h"
 #include "../../GlobalValues.h"
+#include "AnimationData.h"
 
 
-class MainHero : public AbstractCreature, public Unit
+class MainHero : public Creature, public AbstractCreature
 {
     public:
-        MainHero();
+        MainHero(char *creatureNumber, SDL_Renderer *renderer);
         ~MainHero();
 
-    void draw();
+        int getImagePixellOffsetX();
+        int getImagePixellOffsetY();
+        int getNonBattleSpeed();
+
 
     private:
         int additionLife;
@@ -24,6 +28,10 @@ class MainHero : public AbstractCreature, public Unit
         int changeWeaponPoints;
         int usePoints;
         int currPoints;
+
+        // for drawing
+        int imagePixellOffsetX;
+        int imagePixellOffsetY;
 
         Direction direction;
 };
